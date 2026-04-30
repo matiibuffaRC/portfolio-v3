@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Fonts */
+.urbanist{
+    font-family: "Urbanist", sans-serif;
+}
+
+.open-sans{
+    font-family: "Open Sans", sans-serif;
+}
+/* --- */
