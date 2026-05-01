@@ -9,11 +9,11 @@ function Proyects() {
                     <h3 className="open-sans font-bold text-xl">Algunos de mis destacados...</h3>
                 </div>
                 <div>
-                    <div className="dark:bg-[#121820] rounded-full py-1 px-4 inline-flex flex-row gap-4">
-                        <h2 className="font-bold open-sans text-sm hover:bg-gray-100 rounded-full py-1 px-2">Todos</h2>
-                        <h2 className="font-bold open-sans text-sm hover:bg-gray-100 rounded-full py-1 px-2">Frontend</h2>
-                        <h2 className="font-bold open-sans text-sm hover:bg-gray-100 rounded-full py-1 px-2">Backend</h2>
-                        <h2 className="font-bold open-sans text-sm hover:bg-gray-100 rounded-full py-1 px-2">Fullstack</h2>
+                    <div className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
+                        <h2 className="font-bold open-sans text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer">Todos</h2>
+                        <h2 className="font-bold open-sans text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer">Frontend</h2>
+                        <h2 className="font-bold open-sans text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer">Backend</h2>
+                        <h2 className="font-bold open-sans text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer">Fullstack</h2>
                     </div>
                 </div>
             </div>
