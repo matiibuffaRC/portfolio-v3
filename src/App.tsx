@@ -42,13 +42,10 @@ function App() {
         <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
         <main>
             <Inicie></Inicie>
-            <Proyects></Proyects>
+            <section id="proyectos"><Proyects></Proyects></section>
         </main>
         {/* Secciones */}
-        <section id="inicio">...</section>
-        <section id="sobre-mi">...</section>
-        <section id="proyectos">...</section>
-        <section id="contacto">...</section>
+        
         </>
     );
 }

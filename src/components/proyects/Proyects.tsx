@@ -13,7 +13,7 @@ function Proyects() {
     }
 
     return (
-        <section className="dark:bg-[#212830] bg-[#F3F4F6] dark:text-[#D1D7E0] text-[#151B23] py-15 p-5 flex flex-col items-center">
+        <section className="dark:bg-[#212830] bg-[#F3F4F6] dark:text-[#D1D7E0] text-[#151B23] py-17.5 p-5 flex flex-col items-center">
             <div className="w-full md:max-w-4xl lg:max-w-5xl flex flex-col gap-2">
                 <div>
                     <h2 className="urbanist font-bold text-[#259E93] text-3xl">PROYECTOS</h2>

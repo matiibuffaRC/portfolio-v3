@@ -24,7 +24,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
     const currentImage = proyect.images[selected];
 
     return (
-        <div className={`flex flex-col md:flex-row gap-4 py-5 border-b-2 border-gray-300 dark:border-gray-900 ${index % 2 != 1 ? "md:flex-row-reverse" : ""}`}>
+        <div className={`flex flex-col md:flex-row gap-10 md:gap-4 py-5 border-b-2 border-gray-300 dark:border-gray-900 ${index % 2 != 1 ? "md:flex-row-reverse" : ""}`}>
             {/* INFO */}
             <div className="flex-1 flex flex-col justify-between gap-3 md:gap-0">
                 <div>
@@ -33,7 +33,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 </div>
                 <div className="flex flex-row items-center gap-2">
                     <div>
-                        <a href={proyect.url} className={`urbanist font-bold px-3 py-2 rounded-full text-white dark:text-[#121820] ${proyect.state == "finished" ? "bg-[#25A9BC]" : "bg-gray-400"}`}>{proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}</a>
+                        <a href={proyect.url} className={`urbanist font-bold px-3 py-2 rounded-full text-white dark:text-[#121820] ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`}>{proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}</a>
                     </div>
                     <div className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full">
                         <img src={GithubIcon} alt="Github SVG icon" className="h-5 w-5 dark:invert"/>
@@ -41,7 +41,8 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                     </div>
                 </div>
             </div>
-            {/* IMÁGENES */}
+
+            {/* Imágenes */}
             <div className={`flex flex-col md:flex-row gap-4 ${index % 2 != 0 ? "md:flex-row-reverse" : " "}`}>
                 {/* imagen principal */}
                 <div className="w-full md:max-w-90 lg:max-w-110 border border-gray-400 dark:border-gray-700 rounded-2xl">

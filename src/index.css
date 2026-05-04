@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* Fonts */
 .urbanist{
     font-family: "Urbanist", sans-serif;
