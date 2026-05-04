@@ -23,7 +23,7 @@ const proyects:Proyect[] = [
     {
         id: 1,
         title: "Complejo Lo nuestro",
-        description: "Es una web desarrollada para mostrar toda la información necesaria acerca de un complejo de alojamiento en una zona turística. Muestra todas las comodidas y como llegar al mismo, cuenta con los contactos correspondientes para coordinar una reserva por Whatsapp.",
+        description: "Es una web desarrollada para mostrar toda la información necesaria acerca de un complejo de alojamiento en una zona turística. Muestra todas las comodidades y como llegar al mismo, cuenta con los contactos correspondientes para coordinar una reserva por Whatsapp.",
         images:[cover1, img1, img2, img3],
         category:"Frontend",
         url:"...",

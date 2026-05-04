@@ -19,7 +19,7 @@ function Inicie() {
                     </div>
                     <div className="bg-[#E3F6F5] max-w-30 flex-1 text-center py-1 rounded-2xl">
                         <a title='Inicie button' href="#" className="text-[#259E93] urbanist font-bold">
-                            Github
+                            Linkedin
                         </a>
                     </div>
                 </div>

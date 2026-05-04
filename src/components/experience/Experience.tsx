@@ -8,9 +8,9 @@ import TimelineDot from '@mui/lab/TimelineDot';
 
 function Experience() {
     return (
-        <section className='dark:bg-[#121820] bg-[#f9fafc] py-10 px-5'>
+        <section className='dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5'>
             <div className='m-auto flex flex-col items-center lg:max-w-5xl'>
-                <h2 className='urbanist font-bold text-[#259E93] text-3xl w-full'>EXPERIENCIA</h2>
+                <h2 className='urbanist font-bold text-[#259E93] text-3xl w-full pb-3'>EXPERIENCIA</h2>
                 <Timeline
                     className='w-full md:max-w-200'
                     position="right"

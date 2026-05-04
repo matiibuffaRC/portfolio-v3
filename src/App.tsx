@@ -7,6 +7,7 @@ import Sidebar from "./components/headerComponents/sidebar.tsx";
 import Inicie from "./components/inicie/Inicie.tsx";
 import Proyects from "./components/proyects/Proyects.tsx";
 import Experience from "./components/experience/Experience.tsx";
+import AboutMe from "./components/about-me/AboutMe.tsx";
 // 
 
 // Import dependencias
@@ -45,9 +46,8 @@ function App() {
             <section id="inicio"><Inicie></Inicie></section>
             <section id="proyectos"><Proyects></Proyects></section>
             <section id="experiencia"><Experience></Experience></section>
+            <section><AboutMe></AboutMe></section>
         </main>
-        {/* Secciones */}
-        
         </>
     );
 }
