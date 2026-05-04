@@ -10,7 +10,7 @@ function AboutMe() {
                 <div className="flex flex-row flex-wrap">
                     {skill.technologies.map((technology)=>{
                         return(
-                            <span key={technology} className="flex flex-row items-center gap-1 m-1 px-3 py-1 dark:bg-[#1e242c] bg-gray-300 rounded-full">
+                            <span key={technology} className="flex flex-row items-center gap-1 m-1 px-4 py-2 dark:bg-[#1e242c] bg-gray-300 rounded-full">
                                 <img src={skill.icon} alt="" className="dark:invert w-4 h-4" />
                                 <span className="dark:text-[#D1D7E0] text-[#151B23] text-xs font-bold open-sans">{technology}</span>
                             </span>
