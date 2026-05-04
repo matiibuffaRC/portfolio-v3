@@ -5,7 +5,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 /* Fonts */
 .urbanist{
     font-family: "Urbanist", sans-serif;
@@ -14,4 +13,44 @@ html {
 .open-sans{
     font-family: "Open Sans", sans-serif;
 }
+/* --- */
+
+/* Scroll bar */
+
+/* ====== LIGHT MODE ====== */
+:root {
+    --scroll-track: #e5e7eb;
+    --scroll-thumb: #9ca3af;
+    --scroll-thumb-hover: #6b7280;
+}
+
+/* ====== DARK MODE ====== */
+.dark {
+    --scroll-track: #0f172a;
+    --scroll-thumb: #b7bbc2;
+    --scroll-thumb-hover: #a5a7aa;
+}
+
+/* ====== SCROLLBAR ====== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+    border-radius: 999px;
+    border: 2px solid transparent; /* efecto más limpio */
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+}
+
 /* --- */

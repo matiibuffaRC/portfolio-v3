@@ -32,20 +32,20 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
                     className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
                     Inicio
                 </a>
-                <a  
-                    href="#sobre-mi"
-                    className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
-                    Sobre mí
-                </a>
                 <a 
                     href="#proyectos"
                     className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
                     Proyectos
                 </a>
-                <a 
-                    href="#contacto"
+                <a  
+                    href="#experiencia"
                     className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
-                        Contacto
+                    Experiencia
+                </a>
+                <a 
+                    href="#sobre-mi"
+                    className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
+                        Sobre mí
                 </a>
             </nav>
 

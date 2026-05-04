@@ -6,6 +6,7 @@ import Sidebar from "./components/headerComponents/sidebar.tsx";
 // Import inicie components
 import Inicie from "./components/inicie/Inicie.tsx";
 import Proyects from "./components/proyects/Proyects.tsx";
+import Experience from "./components/experience/Experience.tsx";
 // 
 
 // Import dependencias
@@ -41,8 +42,9 @@ function App() {
         <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark}/>
         <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
         <main>
-            <Inicie></Inicie>
+            <section id="inicio"><Inicie></Inicie></section>
             <section id="proyectos"><Proyects></Proyects></section>
+            <section id="experiencia"><Experience></Experience></section>
         </main>
         {/* Secciones */}
         
