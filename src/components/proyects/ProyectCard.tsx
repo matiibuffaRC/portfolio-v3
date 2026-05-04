@@ -29,7 +29,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
             <div className="flex-1 flex flex-col justify-between gap-3 md:gap-0">
                 <div>
                     <h2 className="urbanist font-bold text-2xl dark:text-white">{proyect.title}</h2>
-                    <h3 className="open-sans text-sm">{proyect.description}</h3>
+                    <h3 className="open-sans text-sm md:text-xs lg:text-sm">{proyect.description}</h3>
                 </div>
                 <div className="flex flex-row items-center gap-2">
                     <div>
@@ -42,14 +42,14 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 </div>
             </div>
             {/* IMÁGENES */}
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className={`flex flex-col md:flex-row gap-4 ${index % 2 != 0 ? "md:flex-row-reverse" : " "}`}>
                 {/* imagen principal */}
-                <div className="w-full md:max-w-100 border border-gray-400 dark:border-gray-700 rounded-2xl">
+                <div className="w-full md:max-w-90 lg:max-w-110 border border-gray-400 dark:border-gray-700 rounded-2xl">
                     <img src={currentImage} title="Proyect image" className="w-full object-cover rounded-2xl" />
                 </div>
 
                 {/* miniaturas */}
-                <div className="flex flex-row md:flex-col gap-2 md:gap-5 justify-center">
+                <div className="flex flex-row md:flex-col gap-2  justify-center">
                     {proyect.images.slice(1).map((image, i) => (
                     <div
                         key={i}

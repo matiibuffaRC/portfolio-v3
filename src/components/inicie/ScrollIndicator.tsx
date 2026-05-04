@@ -28,7 +28,7 @@ function ScrollIndicator() {
   return (
     <div
       onClick={handleClick}
-      className={`fixed bottom-10 left-1/2 -translate-x-1/2 cursor-pointer transition-opacity duration-500 ${
+      className={`fixed bottom-5 lg:bottom-15 left-1/2 -translate-x-1/2 cursor-pointer transition-opacity duration-500 ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
