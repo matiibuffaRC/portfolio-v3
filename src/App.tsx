@@ -5,7 +5,7 @@ import Sidebar from "./components/headerComponents/sidebar.tsx";
 
 // Import inicie components
 import Inicie from "./components/inicie/Inicie.tsx";
-import Proyects from "./components/inicie/Proyects.tsx";
+import Proyects from "./components/proyects/Proyects.tsx";
 // 
 
 // Import dependencias
