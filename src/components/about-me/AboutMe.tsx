@@ -6,7 +6,7 @@ function AboutMe() {
     const printSkills = skills.map((skill)=>{
         return(
             <div key={skill.id}>
-                <h3 className="urbanist font-bold text-xl py-1 dark:text-[#D1D7E0] text-[#535b64]">{skill.categoryName}</h3>
+                <h3 className="urbanist font-bold text-xl pt-3 pb-1 dark:text-[#D1D7E0] text-[#535b64]">{skill.categoryName}</h3>
                 <div className="flex flex-row flex-wrap">
                     {skill.technologies.map((technology)=>{
                         return(
@@ -39,7 +39,7 @@ function AboutMe() {
                             En el transcurso del cursado de la carrera desarrollé pensamiento lógico, modelado de sistemas y bases sólidas en algoritmos y estructuras de datos, trabajando con requerimientos reales.
                         </h3>
                     </div>
-                    <div className="border dark:border-gray-800 border-gray-200 p-3 py-5 rounded-2xl shadow md:col-start-2 md:row-start-1 md:row-span-2">
+                    <div className="border dark:border-gray-800 border-gray-200 p-4 py-5 rounded-2xl shadow md:col-start-2 md:row-start-1 md:row-span-2">
                         <h2 className="urbanist font-bold text-2xl">Habilidades técnicas</h2>
                         {printSkills}
                     </div>

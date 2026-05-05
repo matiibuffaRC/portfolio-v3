@@ -1,6 +1,6 @@
 // Imports Header componentes
-import Header from "./components/headerComponents/Header.tsx";
-import Sidebar from "./components/headerComponents/sidebar.tsx";
+import Header from "./components/header/Header.tsx";
+import Sidebar from "./components/header/sidebar.tsx";
 // 
 
 // Import inicie components
@@ -8,6 +8,7 @@ import Inicie from "./components/inicie/Inicie.tsx";
 import Proyects from "./components/proyects/Proyects.tsx";
 import Experience from "./components/experience/Experience.tsx";
 import AboutMe from "./components/about-me/AboutMe.tsx";
+import Footer from "./components/footer/footer.tsx"
 // 
 
 // Import dependencias
@@ -48,6 +49,7 @@ function App() {
             <section id="experiencia"><Experience></Experience></section>
             <section><AboutMe></AboutMe></section>
         </main>
+        <Footer></Footer>
         </>
     );
 }

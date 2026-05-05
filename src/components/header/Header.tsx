@@ -12,7 +12,7 @@ import profileImage from "../../assets/profileImg.jpg";
 
 function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     return (
-        <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full">
+        <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full z-10">
         
             <div className="h-full flex flex-row items-center gap-2">
                 <div className="">
