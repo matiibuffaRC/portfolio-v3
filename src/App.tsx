@@ -47,7 +47,7 @@ function App() {
             <section id="inicio"><Inicie></Inicie></section>
             <section id="proyectos"><Proyects></Proyects></section>
             <section id="experiencia"><Experience></Experience></section>
-            <section><AboutMe></AboutMe></section>
+            <section id="sobre-mi"><AboutMe></AboutMe></section>
         </main>
         <Footer></Footer>
         </>

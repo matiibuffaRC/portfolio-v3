@@ -13,12 +13,12 @@ function Inicie() {
                 <h3 className="text-center text-[#151B23] dark:text-[#D1D7E0] text-lg open-sans">Fullstack React & Node</h3>
                 <div className="flex flex-row justify-center gap-2 px-15 my-3 w-full ">
                     <div className="bg-[#E3F6F5] max-w-30 flex-1 text-center py-1 rounded-2xl">
-                        <a title='Inicie button' href="#" className="text-[#259E93] urbanist font-bold">
+                        <a title='Curriculum button' href="../../../public/MatiasBuffaCVP.pdf" target="_blank" rel="noopener noreferrer" className="text-[#259E93] urbanist font-bold">
                             Ver CV
                         </a>
                     </div>
                     <div className="bg-[#E3F6F5] max-w-30 flex-1 text-center py-1 rounded-2xl">
-                        <a title='Inicie button' href="#" className="text-[#259E93] urbanist font-bold">
+                        <a title='Inicie button' href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/ma" target="__blank" className="text-[#259E93] urbanist font-bold">
                             Linkedin
                         </a>
                     </div>

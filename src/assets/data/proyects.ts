@@ -26,9 +26,9 @@ const proyects:Proyect[] = [
         description: "Es una web desarrollada para mostrar toda la información necesaria acerca de un complejo de alojamiento en una zona turística. Muestra todas las comodidades y como llegar al mismo, cuenta con los contactos correspondientes para coordinar una reserva por Whatsapp.",
         images:[cover1, img1, img2, img3],
         category:"Frontend",
-        url:"...",
+        url:"https://lonuestro.vercel.app/",
         state:"finished",
-        code:"..."
+        code:"https://github.com/matiibuffaRC/cabanias-lo-nuestro"
     },
     {
         id: 2,
@@ -36,9 +36,9 @@ const proyects:Proyect[] = [
         description: "E-commerce diseñado para una tienda de productos de panaderia, repostería y descartables. Cuando con un catálogo de productos, carrito de compras y generador de presupuesto. Cuenta con una API para finalizar los pedidos vía Whatsapp.",
         images:[cover2, img1proyect2, img2proyect2, img3proyect2],
         category:"Fullstack",
-        url:"...",
+        url:"https://casabuffaonline.vercel.app/",
         state:"demo",
-        code:"..."
+        code:"https://github.com/matiibuffaRC/Mini-E-Commerce"
     }
     ,
     // {

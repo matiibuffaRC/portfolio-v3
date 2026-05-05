@@ -33,11 +33,11 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 </div>
                 <div className="flex flex-row items-center gap-2">
                     <div>
-                        <a href={proyect.url} className={`urbanist font-bold px-3 py-2 rounded-full text-white dark:text-[#121820] ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`}>{proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}</a>
+                        <a href={proyect.url} target="__blank" className={`urbanist font-bold px-3 py-2 rounded-full text-white dark:text-[#121820] ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`}>{proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}</a>
                     </div>
                     <div className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full">
                         <img src={GithubIcon} alt="Github SVG icon" className="h-5 w-5 dark:invert"/>
-                        <a href={proyect.code} className="urbanist font-bold cursor-pointer">Código</a>
+                        <a href={proyect.code} target="__blank" className="urbanist font-bold cursor-pointer">Código</a>
                     </div>
                 </div>
             </div>
