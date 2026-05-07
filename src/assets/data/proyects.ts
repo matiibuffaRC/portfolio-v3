@@ -8,6 +8,11 @@ import img1proyect2 from "../../../public/imgs/project3-img2.webp";
 import img2proyect2 from "../../../public/imgs/project3-img3.webp";
 import img3proyect2 from "../../../public/imgs/project3-img4.webp";
 
+import cover3 from "../../../public/imgs/project1-img1.webp";
+import img1proyect3 from "../../../public/imgs/project1-img2.webp";
+import img2proyect3 from "../../../public/imgs/project1-img3.webp";
+import img3proyect3 from "../../../public/imgs/project1-img4.webp";
+
 type Proyect = {
     id: number,
     title: string,
@@ -35,19 +40,21 @@ const proyects:Proyect[] = [
         title: "Casa Buffa",
         description: "E-commerce diseñado para una tienda de productos de panaderia, repostería y descartables. Cuando con un catálogo de productos, carrito de compras y generador de presupuesto. Cuenta con una API para finalizar los pedidos vía Whatsapp.",
         images:[cover2, img1proyect2, img2proyect2, img3proyect2],
-        category:"Fullstack",
+        category:"Backend",
         url:"https://casabuffaonline.vercel.app/",
         state:"demo",
         code:"https://github.com/matiibuffaRC/Mini-E-Commerce"
+    },
+    {
+        id: 3,
+        title: "Enerkits",
+        description: "Desarrollo de sitio web para empresa especializada en la venta de paneles solares y soluciones energéticas residenciales. La plataforma incluye un catálogo interactivo de productos y sistemas, con visualización de precios y opción de finalizar la compra de forma directa a través de WhatsApp.",
+        images:[cover3, img1proyect3, img2proyect3, img3proyect3],
+        category:"Fullstack",
+        url:"https://enerkitssolar.vercel.app/",
+        state:"demo",
+        code:"https://github.com/matiibuffaRC/EnerkitsSolar"
     }
-    ,
-    // {
-        // id: 3,
-        // title: "Enerkits",
-        // description: "...",
-        // images:["..", ".."],
-        // category:"Backend"
-    // },
 ]
 
 export default proyects
