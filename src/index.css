@@ -75,3 +75,37 @@ html {
 }
 
 /* --- */
+
+/* Animaciones de los proyectos */
+
+.proyect-card {
+    opacity: 0;
+
+    transform:
+        translateY(50px)
+        scale(0.98);
+
+    filter: blur(6px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        filter 0.8s ease;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+}
+
+.proyect-card.show {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter: blur(0);
+}
+
+/* --- */

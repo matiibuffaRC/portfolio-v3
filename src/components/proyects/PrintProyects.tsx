@@ -11,18 +11,30 @@ type PrintProyectsProps = {
 // 
 
 
-function PrintProyects({optionSelected}: PrintProyectsProps) {
-    const filteredProyects = proyects.filter((proyect)=>{
-        if(optionSelected === "Todos") return true;
+function PrintProyects({ optionSelected }: PrintProyectsProps) {
+
+    const filteredProyects = proyects.filter((proyect) => {
+
+        if (optionSelected === "Todos") return true;
+
         return proyect.category === optionSelected;
-    })
+    });
+
     return (
         <div className="flex flex-col">
-            {filteredProyects.map((proyect,index) => (
-                <ProyectCard key={proyect.id} proyect={proyect} index={index} />
+
+            {filteredProyects.map((proyect, index) => (
+
+                <ProyectCard
+                    key={`${optionSelected}-${proyect.id}`}
+                    proyect={proyect}
+                    index={index}
+                />
+
             ))}
+
         </div>
-    )
+    );
 }
 
 export default PrintProyects
