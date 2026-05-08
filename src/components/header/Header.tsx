@@ -16,11 +16,15 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
         
             <div className="h-full flex flex-row items-center gap-2">
                 <div className="">
-                    <img src={profileImage} alt="Matías Buffa image" className="h-10 w-10 rounded-full"/>
+                    <a href="#inicio">
+                        <img src={profileImage} alt="Matías Buffa image" className="h-10 w-10 rounded-full"/>
+                    </a>
                 </div>
                 <div className="dark:text-[#D1D7E0] text-[#151B23] urbanist flex flex-col justify-center items-start">
-                    <h2 className="text-md font-bold">Matías Buffa</h2>
-                    <h3 className="text-xs font-bold">Software Developer</h3>
+                    <a href="#inicio">
+                        <h2 className="text-md font-bold">Matías Buffa</h2>
+                        <h3 className="text-xs font-bold">Software Developer</h3>
+                    </a>
                 </div>
             </div>
 
