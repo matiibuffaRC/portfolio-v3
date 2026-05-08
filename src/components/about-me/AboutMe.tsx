@@ -65,15 +65,11 @@ function AboutMe() {
     return (
         <section
             ref={sectionRef}
-            className='dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center'
-        >
-
+            className='dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center'>
             <div>
-
                 <h2 className='urbanist font-bold text-[#259E93] text-3xl w-full pb-3'>
                     UN POCO SOBRE MÍ
                 </h2>
-
                 <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2 md:grid-rows-2 max-w-5xl">
 
                     {/* Card izquierda 1 */}
@@ -83,9 +79,9 @@ function AboutMe() {
                             p-3 py-5 rounded-2xl shadow
                             md:col-start-1 md:row-start-1
                             transition-all duration-700 ease-out
-                            ${visible
-                                ? 'opacity-100 translate-x-0'
-                                : 'opacity-0 -translate-x-20'}
+                            md:${visible
+                                ? 'md:opacity-100 md:translate-x-0'
+                                : 'md:opacity-0 md:-translate-x-20'}
                         `}
                     >
 
@@ -109,8 +105,8 @@ function AboutMe() {
                             md:col-start-1 md:row-start-2
                             transition-all duration-700 ease-out delay-200
                             ${visible
-                                ? 'opacity-100 translate-x-0'
-                                : 'opacity-0 -translate-x-20'}
+                                ? 'md:opacity-100 md:translate-x-0'
+                                : 'md:opacity-0 md:-translate-x-20'}
                         `}
                     >
 
@@ -134,8 +130,8 @@ function AboutMe() {
                             md:col-start-2 md:row-start-1 md:row-span-2
                             transition-all duration-700 ease-out delay-300
                             ${visible
-                                ? 'opacity-100 translate-x-0'
-                                : 'opacity-0 translate-x-20'}
+                                ? 'md:opacity-100 md:translate-x-0'
+                                : 'md:opacity-0 md:translate-x-20'}
                         `}
                     >
 
