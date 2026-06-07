@@ -20,9 +20,7 @@ type ProyectCardProps = {
 function ProyectCard({ proyect, index }: ProyectCardProps) {
 
     const [selected, setSelected] = useState(0);
-
     const [visible, setVisible] = useState(false);
-
     const cardRef = useRef<HTMLDivElement | null>(null);
 
     const currentImage = proyect.images[selected];
@@ -38,7 +36,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
             },
             {
-                threshold: 0.15,
+                threshold: 0.05,
             }
         );
 
@@ -62,7 +60,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 ${index % 2 != 1 ? "md:flex-row-reverse" : ""}
             `}
             style={{
-                transitionDelay: `${index * 0.2}s`,
+                transitionDelay: `${0.1}s`,
             }}
         >
 
