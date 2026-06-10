@@ -13,6 +13,11 @@ import img1proyect3 from "../../../public/imgs/project1-img2.webp";
 import img2proyect3 from "../../../public/imgs/project1-img3.webp";
 import img3proyect3 from "../../../public/imgs/project1-img4.webp";
 
+import cover4 from "../../../public/imgs/project4-img1.webp";
+import img1proyect4 from "../../../public/imgs/project4-img2.webp";
+import img2proyect4 from "../../../public/imgs/project4-img3.webp";
+import img3proyect4 from "../../../public/imgs/project4-img4.webp";
+
 type Proyect = {
     id: number,
     title: string,
@@ -54,6 +59,16 @@ const proyects:Proyect[] = [
         url:"https://enerkitssolar.vercel.app/",
         state:"demo",
         code:"https://github.com/matiibuffaRC/EnerkitsSolar"
+    },
+    {
+        id: 4,
+        title: "Gestor de gastos",
+        description:"Gestor de gastos diseñado para una asignatura de la facultad que me permitió trabajar con React + Typescript. La idea es implementar autenticación y una base de datos para llevar el control de todos los gastos de los usuarios.",
+        images:[cover4, img1proyect4, img2proyect4, img3proyect4],
+        category:"Frontend",
+        url:"https://desarrollo-trabajo-practico2.vercel.app/",
+        state:"demo",
+        code:"https://github.com/matiibuffaRC/desarrollo-trabajo-practico2"
     }
 ]
 

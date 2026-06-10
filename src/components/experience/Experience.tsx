@@ -72,6 +72,16 @@ function Experience() {
                             flex: 0,
                             padding: 0,
                         },
+
+                        [`& .MuiTimelineConnector-root`]: {
+                            backgroundColor: '#259E93',
+                            width: '2px',
+                            minHeight: '80px',
+                        },
+
+                        [`& .MuiTimelineDot-root`]: {
+                            backgroundColor: '#259E93',
+                        },
                     }}
                 >
 
@@ -87,9 +97,7 @@ function Experience() {
 
                             <TimelineSeparator>
                                 <TimelineDot />
-                                {index !== experiences.length - 1 && (
-                                    <TimelineConnector />
-                                )}
+                                <TimelineConnector />
                             </TimelineSeparator>
 
                             <TimelineContent>
