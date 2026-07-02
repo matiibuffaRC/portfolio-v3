@@ -25,11 +25,7 @@ function PrintProyects({ optionSelected }: PrintProyectsProps) {
 
             {filteredProyects.map((proyect, index) => (
 
-                <ProyectCard
-                    key={`${optionSelected}-${proyect.id}`}
-                    proyect={proyect}
-                    index={index}
-                />
+                <ProyectCard key={`${optionSelected}-${proyect.id}`} proyect={proyect} index={index} />
 
             ))}
 

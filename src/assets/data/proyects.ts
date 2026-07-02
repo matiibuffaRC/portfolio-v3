@@ -1,22 +1,22 @@
-import cover1 from "../../../public/imgs/project2-img1.webp";
-import img1 from "../../../public/imgs/project2-img2.webp";
-import img2 from "../../../public/imgs/project2-img3.webp";
-import img3 from "../../../public/imgs/project2-img4.webp";
+import cover1 from "../imgs/project2-img1.webp";
+import img1 from "../imgs/project2-img2.webp";
+import img2 from "../imgs/project2-img3.webp";
+import img3 from "../imgs/project2-img4.webp";
 
-import cover2 from "../../../public/imgs/project3-img1.webp";
-import img1proyect2 from "../../../public/imgs/project3-img2.webp";
-import img2proyect2 from "../../../public/imgs/project3-img3.webp";
-import img3proyect2 from "../../../public/imgs/project3-img4.webp";
+import cover2 from "../imgs/project3-img1.webp";
+import img1proyect2 from "../imgs/project3-img2.webp";
+import img2proyect2 from "../imgs/project3-img3.webp";
+import img3proyect2 from "../imgs/project3-img4.webp";
 
-import cover3 from "../../../public/imgs/project1-img1.webp";
-import img1proyect3 from "../../../public/imgs/project1-img2.webp";
-import img2proyect3 from "../../../public/imgs/project1-img3.webp";
-import img3proyect3 from "../../../public/imgs/project1-img4.webp";
+import cover3 from "../imgs/project1-img1.webp";
+import img1proyect3 from "../imgs/project1-img2.webp";
+import img2proyect3 from "../imgs/project1-img3.webp";
+import img3proyect3 from "../imgs/project1-img4.webp";
 
-import cover4 from "../../../public/imgs/project4-img1.webp";
-import img1proyect4 from "../../../public/imgs/project4-img2.webp";
-import img2proyect4 from "../../../public/imgs/project4-img3.webp";
-import img3proyect4 from "../../../public/imgs/project4-img4.webp";
+import cover4 from "../imgs/project4-img1.webp";
+import img1proyect4 from "../imgs/project4-img2.webp";
+import img2proyect4 from "../imgs/project4-img3.webp";
+import img3proyect4 from "../imgs/project4-img4.webp";
 
 type Proyect = {
     id: number,
@@ -40,16 +40,16 @@ const proyects:Proyect[] = [
         state:"finished",
         code:"https://github.com/matiibuffaRC/cabanias-lo-nuestro"
     },
-    {
-        id: 2,
-        title: "Casa Buffa",
-        description: "E-commerce diseñado para una tienda de productos de panaderia, repostería y descartables. Cuando con un catálogo de productos, carrito de compras y generador de presupuesto. Cuenta con una API para finalizar los pedidos vía Whatsapp.",
-        images:[cover2, img1proyect2, img2proyect2, img3proyect2],
-        category:"Backend",
-        url:"https://casabuffaonline.vercel.app/",
-        state:"demo",
-        code:"https://github.com/matiibuffaRC/Mini-E-Commerce"
-    },
+    // {
+    //     id: 2,
+    //     title: "Casa Buffa",
+    //     description: "E-commerce diseñado para una tienda de productos de panaderia, repostería y descartables. Cuando con un catálogo de productos, carrito de compras y generador de presupuesto. Cuenta con una API para finalizar los pedidos vía Whatsapp.",
+    //     images:[cover2, img1proyect2, img2proyect2, img3proyect2],
+    //     category:"Backend",
+    //     url:"https://casabuffaonline.vercel.app/",
+    //     state:"demo",
+    //     code:"https://github.com/matiibuffaRC/Mini-E-Commerce"
+    // },
     {
         id: 3,
         title: "Enerkits",
