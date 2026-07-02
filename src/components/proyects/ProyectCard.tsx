@@ -90,16 +90,12 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
                 <div className="flex flex-row md:flex-col gap-2 justify-center">
                     {proyect.images.slice(1).map((image, i) => (
-                        <div key={i} onClick={() => setSelected(i + 1)} className={` w-14 h-14 md:w-15 md:h-15 border cursor-pointer rounded-xl ${selected === i + 1 ? "border-white dark:border-gray-800" : "border-gray-400 dark:border-gray-900"} `} >
-                            <img src={image} title="Proyect image" className="w-full h-full object-cover rounded-lg" />
+                        <div key={i} onClick={() => setSelected(i + 1)} className={`w-14 h-14 md:w-15 md:h-15 border cursor-pointer rounded-xl overflow-hidden ${selected === i + 1 ? "border-white dark:border-gray-800" : "border-gray-400 dark:border-gray-900" }`} >
+                            <img src={image} title="Proyect image" className="w-full h-full object-cover" />
                         </div>
                     ))}
                 </div>
-
-                
-
             </div>
-
         </div>
     );
 }

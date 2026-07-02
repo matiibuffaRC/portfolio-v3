@@ -74,16 +74,10 @@ function AboutMe() {
 
                     {/* Card izquierda 1 */}
                     <div
-                        className={`
-                            border dark:border-gray-800 border-gray-200
-                            p-3 py-5 rounded-2xl shadow
-                            md:col-start-1 md:row-start-1
-                            transition-all duration-700 ease-out
-                            md:${visible
-                                ? 'md:opacity-100 md:translate-x-0'
-                                : 'md:opacity-0 md:-translate-x-20'}
-                        `}
-                    >
+    className={`border dark:border-gray-800 border-gray-200 p-3 py-5 rounded-2xl shadow md:col-start-1 md:row-start-1 transition-all duration-700 ease-out ${
+        visible ? 'md:opacity-100 md:translate-x-0' : 'md:opacity-0 md:-translate-x-20'
+    }`}
+>
 
                         <h3 className="open-sans font-bold text-2xl w-full">
                             Matías Buffa
@@ -98,18 +92,7 @@ function AboutMe() {
                     </div>
 
                     {/* Card izquierda 2 */}
-                    <div
-                        className={`
-                            border dark:border-gray-800 border-gray-200
-                            p-3 py-5 rounded-2xl shadow
-                            md:col-start-1 md:row-start-2
-                            transition-all duration-700 ease-out delay-200
-                            ${visible
-                                ? 'md:opacity-100 md:translate-x-0'
-                                : 'md:opacity-0 md:-translate-x-20'}
-                        `}
-                    >
-
+                    <div className={` border dark:border-gray-800 border-gray-200 p-3 py-5 rounded-2xl shadow md:col-start-1 md:row-start-2 transition-all duration-700 ease-out delay-200 ${visible ? 'md:opacity-100 md:translate-x-0' : 'md:opacity-0 md:-translate-x-20'} `} >
                         <h2 className="urbanist font-bold text-2xl">
                             Ingeniería en Sistemas de Información
                         </h2>
@@ -123,30 +106,14 @@ function AboutMe() {
                     </div>
 
                     {/* Card derecha */}
-                    <div
-                        className={`
-                            border dark:border-gray-800 border-gray-200
-                            p-4 py-5 rounded-2xl shadow
-                            md:col-start-2 md:row-start-1 md:row-span-2
-                            transition-all duration-700 ease-out delay-300
-                            ${visible
-                                ? 'md:opacity-100 md:translate-x-0'
-                                : 'md:opacity-0 md:translate-x-20'}
-                        `}
-                    >
-
+                    <div className={`border dark:border-gray-800 border-gray-200 p-4 py-5 rounded-2xl shadow md:col-start-2 md:row-start-1 md:row-span-2 transition-all duration-700 ease-out delay-300 ${visible ? 'md:opacity-100 md:translate-x-0' : 'md:opacity-0 md:translate-x-20'} `} >
                         <h2 className="urbanist font-bold text-2xl">
                             Habilidades técnicas
                         </h2>
-
                         {printSkills}
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
     )
 }
