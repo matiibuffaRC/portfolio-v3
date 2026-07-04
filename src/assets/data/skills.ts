@@ -21,13 +21,13 @@ const skills: SkillCategory[] = [
     {
         id: 2,
         categoryName: "Frontend",
-        technologies: ["HTML", "CSS", "React", "Next.js", "TailwindCSS", "Chakra UI"],
+        technologies: ["React", "Next.js", "TailwindCSS", "Boostrap", "Chakra UI", "Material UI"],
         icon: RocketIcon,
     },
     {
         id: 3,
         categoryName: "Backend",
-        technologies: ["Node.js", "Express", "Firebase", "Postresql"],
+        technologies: ["Node.js", "Express", "Firebase", "Postresql", "Sqlite", "MongoDB"],
         icon: DBIcon,
     },
     {
