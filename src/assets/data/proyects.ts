@@ -3,10 +3,10 @@ import img1 from "../imgs/project2-img2.webp";
 import img2 from "../imgs/project2-img3.webp";
 import img3 from "../imgs/project2-img4.webp";
 
-import cover2 from "../imgs/project3-img1.webp";
-import img1proyect2 from "../imgs/project3-img2.webp";
-import img2proyect2 from "../imgs/project3-img3.webp";
-import img3proyect2 from "../imgs/project3-img4.webp";
+// import cover2 from "../imgs/project3-img1.webp";
+// import img1proyect2 from "../imgs/project3-img2.webp";
+// import img2proyect2 from "../imgs/project3-img3.webp";
+// import img3proyect2 from "../imgs/project3-img4.webp";
 
 import cover3 from "../imgs/project1-img1.webp";
 import img1proyect3 from "../imgs/project1-img2.webp";
