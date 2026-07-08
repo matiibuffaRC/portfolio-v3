@@ -1,3 +1,5 @@
+// Recordar comentar partes que no se utilizan en producción para evitar errores a futuro cabeza de verga
+
 import cover1 from "../imgs/project2-img1.webp";
 import img1 from "../imgs/project2-img2.webp";
 import img2 from "../imgs/project2-img3.webp";
