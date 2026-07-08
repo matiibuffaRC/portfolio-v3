@@ -62,7 +62,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 </div>
                 <div className="flex flex-row items-center gap-2">
                     <div>
-                        <a href={proyect.url} target="__blank" className={`urbanist font-bold px-3 py-2 rounded-fulltext-white dark:text-[#121820]${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"} `} >
+                       <a href={proyect.url} target="__blank" className={`urbanist font-bold px-3 py-2 rounded-full text-white dark:text-[#121820] ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`} >
                             {proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}
                         </a>
                     </div>
