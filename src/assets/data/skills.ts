@@ -33,7 +33,7 @@ const skills: SkillCategory[] = [
     {
         id: 4,
         categoryName: "Herramientas",
-        technologies: ["Git", "Figma", "Power Query", "VSCode", "Jira", "Pack Office", "Docker",
+        technologies: ["Git", "Figma", "Power Query", "VSCode", "Jira", "Pack Office", "Docker", "SAP ERP", "ERP",
         ],
         icon: ToolsIcon,
     },
