@@ -59,7 +59,7 @@ const proyects:Proyect[] = [
         images:[cover3, img1proyect3, img2proyect3, img3proyect3],
         category:"Fullstack",
         url:"https://enerkitssolar.vercel.app/",
-        state:"demo",
+        state:"finished",
         code:"https://github.com/matiibuffaRC/EnerkitsSolar"
     },
     {
