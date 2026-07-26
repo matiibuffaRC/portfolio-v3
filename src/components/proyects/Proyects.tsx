@@ -4,11 +4,13 @@ import { useState } from 'react';
 import PrintProyects from './PrintProyects';
 // 
 
+const OPTIONS = ["Todos", "Frontend", "Backend", "Fullstack"];
+
 function Proyects() {
     // Variable de estado para guardar lo que elegimos para mostrar, por defecto mostramos todos
     const [optionSelected, setOptionSelected] = useState<string>("Todos");
     // Función para cambiar de selección
-    const handleOption = (option:string) =>{
+    const handleOption = (option: string) => {
         setOptionSelected(option);
     }
 
@@ -22,18 +24,15 @@ function Proyects() {
                 {/* Filtro de opciones */}
                 <div>
                     <div className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
-                        <h2 
-                            onClick={()=>{handleOption("Todos")}}
-                            className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected == "Todos" ? "bg-gray-200 dark:bg-[#212830]" : ""}`}>Todos</h2>
-                        <h2 
-                            onClick={()=>{handleOption("Frontend")}}
-                            className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected == "Frontend" ? "bg-gray-200 dark:bg-[#212830]" : ""}`}>Frontend</h2>
-                        <h2 
-                            onClick={()=>{handleOption("Backend")}}
-                            className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected == "Backend" ? "bg-gray-200 dark:bg-[#212830]" : ""}`}>Backend</h2>
-                        <h2 
-                            onClick={()=>{handleOption("Fullstack")}}
-                            className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected == "FullStack" ? "bg-gray-200 dark:bg-[#212830]" : ""}`}>Fullstack</h2>
+                        {OPTIONS.map((option) => (
+                            <h2
+                                key={option}
+                                onClick={() => handleOption(option)}
+                                className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830]" : ""}`}
+                            >
+                                {option}
+                            </h2>
+                        ))}
                     </div>
                 </div>
                 <div>
