@@ -1,0 +1,21 @@
+{
+  "name": "Matías Buffa Portfolio",
+  "short_name": "Matías Buffa",
+  "description": "Portfolio personal de Matías Buffa con proyectos, experiencia y contacto profesional.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121820",
+  "theme_color": "#151B23",
+  "icons": [
+    {
+      "src": "/favIcon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favIcon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

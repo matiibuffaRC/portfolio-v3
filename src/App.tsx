@@ -41,9 +41,12 @@ function App() {
 
     return (
         <>
+        <a href="#contenido-principal" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-[#151B23] focus:px-4 focus:py-2 focus:text-white">
+            Saltar al contenido principal
+        </a>
         <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark}/>
         <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
-        <main>
+        <main id="contenido-principal" tabIndex={-1}>
             <section id="inicio"><Inicie></Inicie></section>
             <section id="proyectos"><Proyects></Proyects></section>
             <section id="experiencia"><Experience></Experience></section>

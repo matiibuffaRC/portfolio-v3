@@ -10,14 +10,14 @@ function footer() {
             <div>
                 <div className='flex flex-col gap-1 md:flex-row md:justify-between md:px-10'>
                     <div className='flex flex-row items-center justify-center gap-5'>
-                        <a href="https://github.com/matiibuffaRC" target="__blank" title='Github icon' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
-                            <img src={GithubIcon} alt="" className='w-4 h-4 dark:invert'/>
+                        <a href="https://github.com/matiibuffaRC" target="__blank" rel="noopener noreferrer" aria-label="Visitar GitHub de Matías Buffa" title='GitHub de Matías Buffa' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
+                            <img src={GithubIcon} alt="Icono de GitHub" className='w-4 h-4 dark:invert'/>
                         </a>
-                        <a href="mailto:matbuffautn05@gmail.com" title='Mail icon' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
-                            <img src={EmailIcon} alt="" className='w-4 h-4 dark:invert'/>
+                        <a href="mailto:matbuffautn05@gmail.com" aria-label="Enviar correo a Matías Buffa" title='Enviar correo a Matías Buffa' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
+                            <img src={EmailIcon} alt="Icono de correo electrónico" className='w-4 h-4 dark:invert'/>
                         </a>
-                        <a href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="__blank" title='Linkedin icon' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
-                            <img src={LinkedinIcon} alt="" className='w-4 h-4 dark:invert'/>
+                        <a href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="__blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn de Matías Buffa" title='LinkedIn de Matías Buffa' className="hover:bg-gray-200 dark:hover:bg-[#252C34] p-2 rounded-full">
+                            <img src={LinkedinIcon} alt="Icono de LinkedIn" className='w-4 h-4 dark:invert'/>
                         </a>
                     </div>
                     <div className='flex flex-row items-center justify-center dark:text-white'>

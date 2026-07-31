@@ -30,7 +30,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
             {/* Menú desktop*/}
             <div className="flex flex-row gap-2">
-                <nav className="dark:text-[#D1D7E0] text-[#151B23] urbanist font-bold text-md hidden md:flex gap-2">
+                <nav aria-label="Navegación principal" className="dark:text-[#D1D7E0] text-[#151B23] urbanist font-bold text-md hidden md:flex gap-2">
                 <a 
                     href="#inicio"
                     className="hover:bg-gray-200 dark:hover:bg-[#252C34] py-1 px-4 rounded-xl">
@@ -57,7 +57,10 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
             <div className="flex items-center gap-4">
             {/* Change theme button */}
                 <button
-                    title="Toggle button"
+                    type="button"
+                    title="Cambiar tema"
+                    aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"}
+                    aria-pressed={dark}
                     onClick={() => setDark(!dark)}
                     className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-300 cursor-pointer ${
                         dark ? "bg-gray-800" : "bg-gray-300"
@@ -68,7 +71,11 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
                 {/* Menú button */}
                 <button 
-                    title="Menú button" 
+                    type="button"
+                    title="Abrir o cerrar menú"
+                    aria-label={open ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+                    aria-expanded={open}
+                    aria-controls="menu-navegacion"
                     onClick={() => setOpen(!open)} 
                     className="md:hidden relative w-5 h-5 z-50">
                         <span className={`absolute left-0 w-full h-0.5 dark:bg-[#D1D7E0] bg-black transition-all duration-300 ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1"}`} />
