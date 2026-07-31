@@ -20,6 +20,11 @@ import img1proyect4 from "../imgs/project4-img2.webp";
 import img2proyect4 from "../imgs/project4-img3.webp";
 import img3proyect4 from "../imgs/project4-img4.webp";
 
+import cover5 from "../imgs/project5-img1.webp";
+import img1proyect5 from "../imgs/project5-img2.webp";
+import img2proyect5 from "../imgs/project5-img3.webp";
+import img3proyect5 from "../imgs/project5-img4.webp";
+
 type Proyect = {
     id: number,
     title: string,
@@ -71,6 +76,16 @@ const proyects:Proyect[] = [
         url:"https://desarrollo-trabajo-practico2.vercel.app/",
         state:"demo",
         code:"https://github.com/matiibuffaRC/desarrollo-trabajo-practico2"
+    },
+    {
+        id: 5,
+        title: "TuTurnoYa",
+        description:"Sistema de gestión de turnos de peluquerías con la posiblidad de elegir diferentes sucursales, barberos y servicios. Con la posilibidad de ver horarios disponibles y servicios ofrecidos. Panel de administración total para cada barbero y dashboard de gestión para un administrador.",
+        images:[cover5, img1proyect5, img2proyect5, img3proyect5],
+        category:"Frontend",
+        url:"",
+        state:"Sin terminar",
+        code:"https://github.com/matiibuffaRC/TuTurnoYa"
     }
 ]
 

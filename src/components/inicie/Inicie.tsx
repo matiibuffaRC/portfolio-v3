@@ -12,31 +12,17 @@ function Inicie() {
                 <h2 className="text-center text-[#151B23] dark:text-[#D1D7E0] text-2xl md:text-2xl open-sans font-semibold">Desarrollador Full Stack especializado en React y Node.js</h2>
                 <h3 className="text-center text-[#151B23] dark:text-[#D1D7E0] text-lg open-sans">Creación de experiencias web modernas, escalables y accesibles</h3>
                 <div className="flex flex-row justify-center gap-2 px-4 my-3 w-full">
-    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
-        <a
-            title="Descargar curriculum vitae"
-            aria-label="Descargar curriculum vitae de Matías Buffa"
-            href="/MatiasBuffaCVP.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-[#259E93] urbanist font-bold"
-        >
-            Ver CV
-        </a>
-    </div>
-    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
-        <a
-            title="Visitar LinkedIn de Matías Buffa"
-            aria-label="Visitar perfil de LinkedIn de Matías Buffa"
-            href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block text-[#259E93] urbanist font-bold"
-        >
-            LinkedIn
-        </a>
-    </div>
-</div>
+                    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
+                        <a title="Descargar curriculum vitae" aria-label="Descargar curriculum vitae de Matías Buffa" href="/MatiasBuffaCVP.pdf" target="_blank" rel="noopener noreferrer" className="block text-[#259E93] urbanist font-bold" >
+                            Ver CV
+                        </a>
+                    </div>
+                    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
+                        <a title="Visitar LinkedIn de Matías Buffa" aria-label="Visitar perfil de LinkedIn de Matías Buffa" href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="_blank" rel="noopener noreferrer" className="block text-[#259E93] urbanist font-bold" >
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
             </div>
             <ScrollIndicator />
         </section>
