@@ -80,7 +80,7 @@ const proyects:Proyect[] = [
     {
         id: 5,
         title: "TuTurnoYa",
-        description:"Sistema de gestión de turnos de peluquerías con la posiblidad de elegir diferentes sucursales, barberos y servicios. Con la posilibidad de ver horarios disponibles y servicios ofrecidos. Panel de administración total para cada barbero y dashboard de gestión para un administrador.",
+        description:"Sistema de gestión de turnos de peluquería. Permite a los clientes seleccionar sucursales, barberos y servicios, consultando en tiempo real los horarios disponibles. Incluye un panel de administración individual para cada barbero y un dashboard centralizado para el administrador general.",
         images:[cover5, img1proyect5, img2proyect5, img3proyect5],
         category:"Frontend",
         url:"",
