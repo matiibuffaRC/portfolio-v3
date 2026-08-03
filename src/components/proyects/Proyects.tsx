@@ -15,21 +15,17 @@ function Proyects() {
     }
 
     return (
-        <section className="dark:bg-[#212830] bg-[#F3F4F6] dark:text-[#D1D7E0] text-[#151B23] py-17.5 p-5 flex flex-col items-center">
+        <section id="proyectos" className="dark:bg-[#212830] bg-[#F3F4F6] dark:text-[#D1D7E0] text-[#151B23] py-17.5 p-5 flex flex-col items-center">
             <div className="w-full md:max-w-4xl lg:max-w-5xl flex flex-col gap-2">
                 <div>
-                    <h2 className="urbanist font-bold text-[#259E93] text-3xl">PROYECTOS</h2>
-                    <h3 className="open-sans font-bold text-xl">Algunos de mis destacados...</h3>
+                    <h2 className="urbanist font-bold text-[#259E93] text-4xl">PROYECTOS</h2>
+                    <h3 className="open-sans font-semibold text-2xl">Algunos de mis destacados...</h3>
                 </div>
                 {/* Filtro de opciones */}
                 <div>
                     <div className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
                         {OPTIONS.map((option) => (
-                            <h2
-                                key={option}
-                                onClick={() => handleOption(option)}
-                                className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830]" : ""}`}
-                            >
+                            <h2 key={option} onClick={() => handleOption(option)} className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830]" : ""}`} >
                                 {option}
                             </h2>
                         ))}
