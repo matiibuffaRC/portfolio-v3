@@ -82,7 +82,7 @@ const proyects:Proyect[] = [
         title: "TuTurnoYa",
         description:"Sistema de gestión de turnos de peluquería. Permite a los clientes seleccionar sucursales, barberos y servicios, consultando en tiempo real los horarios disponibles. Incluye un panel de administración individual para cada barbero y un dashboard centralizado para el administrador general.",
         images:[cover5, img1proyect5, img2proyect5, img3proyect5],
-        category:"Frontend",
+        category:"Backend",
         url:"",
         state:"Sin terminar",
         code:"https://github.com/matiibuffaRC/TuTurnoYa"
