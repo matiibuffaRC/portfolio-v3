@@ -89,7 +89,7 @@ function TechCarousel({
     );
 }
 
-// Componente principal: dos carruseles apilados, girando en direcciones opuestas
+// Componente padre con los dos carruseles 
 function TechCarousels({ dark }: { dark: boolean }) {
     const [isPaused, setIsPaused] = useState(false);
 
