@@ -55,8 +55,8 @@ function AboutMe({ dark = false }: AboutMeProps) {
         });
 
     return (
-        <section id="sobre-mi" ref={sectionRef} className="dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center" >
-            <div className="mb-10">
+        <section id="sobre-mi" ref={sectionRef} className="dark:bg-[#121820] bg-[#f9fafc] pt-17.5 pb-10 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center" >
+            <div>
                 <h2 className="urbanist font-bold text-[#259E93] text-4xl w-full pb-3">
                     UN POCO SOBRE MÍ
                 </h2>
@@ -101,7 +101,6 @@ function AboutMe({ dark = false }: AboutMeProps) {
                     </div>
                 </div>
             </div>
-            <TechCarousel  dark={dark} />
         </section>
     );
 }
