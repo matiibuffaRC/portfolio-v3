@@ -53,7 +53,7 @@ function App() {
                 <Experience></Experience>
             </section>
             <section id="sobre-mi">
-                <AboutMe dark={dark} />
+                <AboutMe/>
             </section>
             <section className="py-17.5 dark:bg-[#121820] bg-[#f9fafc]">
                 <TechCarousel  dark={dark} />

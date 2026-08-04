@@ -2,13 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import skills from "../../assets/data/skills.ts";
-import TechCarousel from "../Techcarousel/Techcarousel.tsx";
 
-type AboutMeProps = {
-    dark?: boolean;
-    };
 
-function AboutMe({ dark = false }: AboutMeProps) {
+function AboutMe() {
     const sectionRef = useRef(null);
     const [visible, setVisible] = useState(false);
 
