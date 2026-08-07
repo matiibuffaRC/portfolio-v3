@@ -46,15 +46,19 @@ function App() {
             <section id="inicio">
                 <Inicie></Inicie>
             </section>
+
             <section id="proyectos">
                 <Proyects></Proyects>
             </section>
+
             <section id="experiencia">
                 <Experience></Experience>
             </section>
+
             <section id="sobre-mi">
                 <AboutMe/>
             </section>
+            
             <section className="py-17.5 dark:bg-[#121820] bg-[#f9fafc]">
                 <TechCarousel  dark={dark} />
             </section>

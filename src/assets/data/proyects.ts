@@ -63,7 +63,7 @@ const proyects:Proyect[] = [
         description: "Desarrollo de sitio web para empresa especializada en la venta de paneles solares y soluciones energéticas residenciales. La plataforma incluye un catálogo interactivo de productos y sistemas, con visualización de precios y opción de finalizar la compra de forma directa a través de WhatsApp.",
         images:[cover3, img1proyect3, img2proyect3, img3proyect3],
         category:"Fullstack",
-        url:"https://enerkitssolar.vercel.app/",
+        url:"https://enerkits.vercel.app/",
         state:"finished",
         code:"https://github.com/matiibuffaRC/EnerkitsSolar"
     },
