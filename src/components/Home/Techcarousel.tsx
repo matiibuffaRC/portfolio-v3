@@ -15,10 +15,6 @@ import bootstrap from "../../assets/icons/techs/bootstrap.svg";
 import nodeIcon from "../../assets/icons/techs/node.svg";
 import expressjsIcon from "../../assets/icons/techs/expressjs.svg";
 import expressjsDarkIcon from "../../assets/icons/techs/expressjs_dark.svg";
-import mongodbLightIcon from "../../assets/icons/techs/mongodb-icon-light.svg";
-import mongodbDarkIcon from "../../assets/icons/techs/mongodb-icon-dark.svg";
-import mysqlLightIcon from "../../assets/icons/techs/mysql-icon-light.svg";
-import mysqlDarkIcon from "../../assets/icons/techs/mysql-icon-dark.svg";
 import postgresqlIcon from "../../assets/icons/techs/postgresql.svg";
 import firebaseIcon from "../../assets/icons/techs/firebase.svg";
 import sqlite from "../../assets/icons/techs/sqlite.svg"
@@ -46,8 +42,6 @@ const frontendTechnologies: TechIcon[] = [
 const backendTechnologies: TechIcon[] = [
     { name: "Node.js", light: nodeIcon },
     { name: "Express", light: expressjsIcon, dark: expressjsDarkIcon },
-    { name: "MongoDB", light: mongodbLightIcon, dark: mongodbDarkIcon },
-    { name: "MySQL", light: mysqlLightIcon, dark: mysqlDarkIcon },
     { name: "PostgreSQL", light: postgresqlIcon },
     { name: "Firebase", light: firebaseIcon },
     { name: "SQLite", light: sqlite },
