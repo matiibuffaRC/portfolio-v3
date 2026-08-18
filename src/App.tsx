@@ -4,12 +4,12 @@ import Sidebar from "./components/header/sidebar.tsx";
 //
 
 // Import inicie components
-import Inicie from "./components/inicie/Inicie.tsx";
-import Proyects from "./components/proyects/Proyects.tsx";
-import Experience from "./components/experience/Experience.tsx";
-import AboutMe from "./components/about-me/AboutMe.tsx";
-import TechCarousel from "./components/Techcarousel/Techcarousel.tsx";
-import Footer from "./components/footer/footer.tsx";
+import Inicie from "./components/Home/Inicie.tsx";
+import Proyects from "./components/Home/proyects/Proyects.tsx";
+import Experience from "./components/Home/Experience.tsx";
+import AboutMe from "./components/Home/AboutMe.tsx";
+import TechCarousel from "./components/Home/Techcarousel.tsx";
+import Footer from "./components/footer/Footer.tsx";
 //
 
 // Import dependencias
@@ -37,33 +37,36 @@ function App() {
 
     return (
         <>
-        <a href="#contenido-principal" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-[#151B23] focus:px-4 focus:py-2 focus:text-white" >
-            Saltar al contenido principal
-        </a>
-        <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark} />
-        <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
-        <main id="contenido-principal" tabIndex={-1}>
-            <section id="inicio">
-                <Inicie></Inicie>
-            </section>
+            <a
+                href="#contenido-principal"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-[#151B23] focus:px-4 focus:py-2 focus:text-white"
+            >
+                Saltar al contenido principal
+            </a>
+            <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark} />
+            <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
+            <main id="contenido-principal" tabIndex={-1}>
+                <section id="inicio">
+                    <Inicie></Inicie>
+                </section>
 
-            <section id="proyectos">
-                <Proyects></Proyects>
-            </section>
+                <section id="proyectos">
+                    <Proyects></Proyects>
+                </section>
 
-            <section id="experiencia">
-                <Experience></Experience>
-            </section>
+                <section id="experiencia">
+                    <Experience></Experience>
+                </section>
 
-            <section id="sobre-mi">
-                <AboutMe/>
-            </section>
-            
-            <section className="py-17.5 dark:bg-[#121820] bg-[#f9fafc]">
-                <TechCarousel  dark={dark} />
-            </section>
-        </main>
-        <Footer></Footer>
+                <section id="sobre-mi">
+                    <AboutMe />
+                </section>
+
+                <section className="py-17.5 dark:bg-[#121820] bg-[#f9fafc]">
+                    <TechCarousel dark={dark} />
+                </section>
+            </main>
+            <Footer></Footer>
         </>
     );
 }
