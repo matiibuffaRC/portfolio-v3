@@ -3,7 +3,6 @@ import ToolsIcon from "../../assets/icons/Tool.svg";
 import CodeIcon from "../../assets/icons/Code.svg";
 import RocketIcon from "../../assets/icons/Rocket.svg";
 
-
 type SkillCategory = {
     id: number;
     categoryName: string;
@@ -15,28 +14,27 @@ const skills: SkillCategory[] = [
     {
         id: 1,
         categoryName: "Lenguajes",
-        technologies: ["Javascript", "Typescript", "C++", "SQL"],
+        technologies: ["JavaScript", "TypeScript", "SQL"],
         icon: CodeIcon,
     },
     {
         id: 2,
         categoryName: "Frontend",
-        technologies: ["React", "Next.js", "TailwindCSS", "Boostrap", "Chakra UI", "Material UI"],
+        technologies: ["React", "Next.js", "TailwindCSS", "Bootstrap", "Chakra UI", "Material UI"],
         icon: RocketIcon,
     },
     {
         id: 3,
         categoryName: "Backend",
-        technologies: ["Node.js", "Express", "Firebase", "Postresql", "Sqlite", "MongoDB"],
+        technologies: ["Node.js", "Express", "Firebase", "PostgreSQL", "SQLite"],
         icon: DBIcon,
     },
     {
         id: 4,
         categoryName: "Herramientas",
-        technologies: ["Git", "Figma", "Power Query", "VSCode", "Jira", "Pack Office", "Docker", "SAP ERP", "ERP",
-        ],
+        technologies: ["Git", "GitHub", "Figma", "Docker", "Jira"],
         icon: ToolsIcon,
     },
 ];
 
-export default skills
+export default skills;

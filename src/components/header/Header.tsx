@@ -64,7 +64,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
             {/* Menú desktop*/}
             <div className="flex flex-row gap-2">
-                <nav aria-label="Navegación principal" className="dark:text-[#D1D7E0] text-[#151B23] urbanist  text-md hidden md:flex gap-2">
+                <nav aria-label="Navegación principal" className="dark:text-[#D1D7E0] text-[#151B23] urbanist font-semibold text-md hidden md:flex gap-2">
                     <a href="#inicio" className={linkClass("inicio")}>
                         Inicio
                     </a>
