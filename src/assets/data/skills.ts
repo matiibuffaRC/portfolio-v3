@@ -26,7 +26,7 @@ const skills: SkillCategory[] = [
     {
         id: 3,
         categoryName: "Backend",
-        technologies: ["Node.js", "Express", "Firebase", "PostgreSQL", "SQLite"],
+        technologies: ["Node.js", "Express", "Firebase", "Prisma", "PostgreSQL", "SQLite"],
         icon: DBIcon,
     },
     {
