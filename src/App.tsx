@@ -9,7 +9,7 @@ import Proyects from "./components/Home/proyects/Proyects.tsx";
 import Experience from "./components/Home/Experience.tsx";
 import AboutMe from "./components/Home/AboutMe.tsx";
 import TechCarousel from "./components/Home/Techcarousel.tsx";
-import Footer from "./components/footer/Footer.tsx";
+import Footer from "./components/footer/Footer.tsx"
 //
 
 // Import dependencias
