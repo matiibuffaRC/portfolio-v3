@@ -4,7 +4,7 @@ import EmailIcon from "../../assets/icons/mail-alt-3-svgrepo-com.svg";
 import LinkedinIcon from "../../assets/icons/linkedin-svgrepo-com.svg";
 
 
-function Footer() {
+function footer() {
     return (
         <footer className='bg-gray-100 dark:bg-[#151B23] p-5 urbanist'>
             <div>
@@ -32,4 +32,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default footer

@@ -9,13 +9,12 @@ import Proyects from "./components/Home/proyects/Proyects.tsx";
 import Experience from "./components/Home/Experience.tsx";
 import AboutMe from "./components/Home/AboutMe.tsx";
 import TechCarousel from "./components/Home/Techcarousel.tsx";
-import Footer from "./components/footer/Footer.tsx";
+import Footer from "./components/footer/footer.jsx";
 //
 
-// Import dependencias
+// Import dependencias de react
 import { useState, useEffect } from "react";
 
-// Funcion exportad
 function App() {
     const [open, setOpen] = useState<boolean>(false);
     const [dark, setDark] = useState<boolean>(false);
@@ -23,7 +22,6 @@ function App() {
     // cargar preferencia
     useEffect(() => {
         const saved = localStorage.getItem("theme");
-
         if (saved === "dark") {
             setDark(true);
             document.documentElement.classList.add("dark");
