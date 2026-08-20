@@ -63,22 +63,12 @@ function Experience() {
 
                 <Timeline className='w-full md:max-w-200' position="right"
                     sx={{
-                        [`& .MuiTimelineItem-root:before`]: {
-                            flex: 0,
-                            padding: 0,
-                        },
+                        [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0, },
 
-                        [`& .MuiTimelineConnector-root`]: {
-                            backgroundColor: '#259E93',
-                            width: '2px',
-                            minHeight: '80px',
-                        },
+                        [`& .MuiTimelineConnector-root`]: { backgroundColor: '#259E93', width: '2px', minHeight: '80px', },
 
-                        [`& .MuiTimelineDot-root`]: {
-                            backgroundColor: '#259E93',
-                        },
-                    }}
-                >
+                        [`& .MuiTimelineDot-root`]: { backgroundColor: '#259E93', },
+                    }}>
 
                     {experiences.map((exp, index) => (
 

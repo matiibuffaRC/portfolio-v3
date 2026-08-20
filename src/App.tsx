@@ -9,7 +9,7 @@ import Proyects from "./components/Home/proyects/Proyects.tsx";
 import Experience from "./components/Home/Experience.tsx";
 import AboutMe from "./components/Home/AboutMe.tsx";
 import TechCarousel from "./components/Home/Techcarousel.tsx";
-import Footer from "./components/footer/Footer"
+import Footer from "./components/footer/Footer.tsx";
 //
 
 // Import dependencias
@@ -38,10 +38,7 @@ function App() {
 
     return (
         <>
-            <a
-                href="#contenido-principal"
-                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-[#151B23] focus:px-4 focus:py-2 focus:text-white"
-            >
+            <a href="#contenido-principal" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-[#151B23] focus:px-4 focus:py-2 focus:text-white" >
                 Saltar al contenido principal
             </a>
             <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark} />
