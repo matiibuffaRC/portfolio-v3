@@ -8,7 +8,7 @@ type Proyect = {
   description: string;
   images: string[];
   url: string;
-  state: string;
+  state: "finished" | "demo" | "Sin terminar" | "educational";
   code: string;
 };
 
@@ -23,6 +23,8 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   const currentImage = proyect.images[selected];
+  const isEducational = proyect.state === "educational";
+  const hasWebsite = proyect.state !== "Sin terminar";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +49,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
     <div
       ref={cardRef}
       className={`proyect-card ${visible ? "show" : ""} flex flex-col md:flex-row gap-10 md:gap-4 py-5 border-b-2 border-gray-300 dark:border-gray-900 ${index % 2 != 1 ? "md:flex-row-reverse" : ""} `}
-      style={{ transitionDelay: `${0.1}s` }}
+      style={{ transitionDelay: `${index * 0.12}s` }}
     >
       <div className="flex-1 flex flex-col justify-between gap-3 md:gap-0 ">
         <div>
@@ -59,7 +61,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
           </h3>
         </div>
         <div className="flex flex-row items-center gap-2">
-          {proyect.state !== "Sin terminar" && (
+          {hasWebsite && (
             <div>
               <a
                 href={proyect.url}
@@ -93,15 +95,18 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
         <div className="relative w-full md:max-w-90 lg:max-w-110">
           <div className="border border-gray-400 dark:border-gray-700 rounded-2xl">
             <img
+              key={currentImage}
               src={currentImage}
               title="Proyect image"
-              className="w-full object-cover rounded-2xl"
+              className="project-image-enter w-full object-cover rounded-2xl"
             />
           </div>
 
           {proyect.state !== "finished" && (
-            <span className="absolute top-3 left-3 rounded-full bg-[#259E93] px-3 py-1 text-xs text-white open-sans">
-              En producción
+            <span
+              className={`absolute top-3 left-3 rounded-full border px-3 py-1 text-xs open-sans ${isEducational ? "border-[#259E93] bg-[#E3F6F5] text-[#176b68] dark:border-[#62c9c0] dark:bg-[#163c3d] dark:text-[#D1F4F1]" : "border-[#259E93] bg-[#259E93] text-white"}`}
+            >
+              {isEducational ? "Educativo" : "En producción"}
             </span>
           )}
         </div>

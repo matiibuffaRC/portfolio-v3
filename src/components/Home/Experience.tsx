@@ -1,113 +1,112 @@
 // Experience.jsx
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineDot from "@mui/lab/TimelineDot";
 
 function Experience() {
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
-    const sectionRef = useRef(null);
-    const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+      },
+    );
 
-    useEffect(() => {
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
+    return () => observer.disconnect();
+  }, []);
 
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                }
+  const experiences = [
+    {
+      title: "Estudiante investigador",
+      company: "Universidad Tecnológica Nacional",
+      date: "Abril 2025 - Diciembre 2025",
+      desc: "Como estudiante de investigación, trabajé en un grupo dedicado a analizar y documentar procesos de negocio de empresas locales, con el objetivo de comprender su funcionamiento y detectar oportunidades de mejora.",
+    },
+    {
+      title: "Desarrollo Web",
+      company: "Freelance",
+      date: "Agosto 2024 - Actualidad",
+      desc: "Como desarrollador web freelance, diseñé y desarrollé sitios y aplicaciones web a medida, adaptados a las necesidades de cada cliente, priorizando la usabilidad, el rendimiento y el diseño responsive.",
+    },
+  ];
 
+  return (
+    <section
+      id="experiencia"
+      ref={sectionRef}
+      className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5"
+    >
+      <div className="m-auto flex flex-col items-center lg:max-w-5xl">
+        <h2 className="urbanist font-bold text-[#259E93] text-4xl w-full pb-3">
+          EXPERIENCIA
+        </h2>
+
+        <Timeline
+          className="w-full md:max-w-200"
+          position="right"
+          sx={{
+            [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0 },
+
+            [`& .MuiTimelineConnector-root`]: {
+              backgroundColor: "#259E93",
+              width: "2px",
+              minHeight: "80px",
             },
-            {
-                threshold: 0.2,
-            }
-        );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+            [`& .MuiTimelineDot-root`]: { backgroundColor: "#259E93" },
+          }}
+        >
+          {experiences.map((exp, index) => (
+            <TimelineItem
+              key={index}
+              className={`timeline-item ${visible ? "show" : ""}`}
+              style={{ transitionDelay: `${index * 0.3}s` }}
+            >
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
 
-        return () => observer.disconnect();
-
-    }, []);
-
-    const experiences = [
-        {
-            title: "Estudiante investigador",
-            company: "Universidad Tecnológica Nacional",
-            date: "Abril 2025 - Diciembre 2025",
-            desc: "Como estudiante de investigación, trabajé en un grupo dedicado a analizar y documentar procesos de negocio de empresas locales, con el objetivo de comprender su funcionamiento y detectar oportunidades de mejora."
-        },
-        {
-            title: "Desarrollo Web",
-            company: "Freelance",
-            date: "Agosto 2024 - Actualidad",
-            desc: "Como desarrollador web freelance, diseñé y desarrollé sitios y aplicaciones web a medida, adaptados a las necesidades de cada cliente, priorizando la usabilidad, el rendimiento y el diseño responsive."
-        }
-    ];
-
-    return (
-        <section id="experiencia" ref={sectionRef} className='dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5' >
-
-            <div className='m-auto flex flex-col items-center lg:max-w-5xl'>
-
-                <h2 className='urbanist font-bold text-[#259E93] text-4xl w-full pb-3'>
-                    EXPERIENCIA
+              <TimelineContent>
+                <h2 className="urbanist font-bold text-xl md:text-2xl dark:text-white">
+                  {exp.title}
                 </h2>
 
-                <Timeline className='w-full md:max-w-200' position="right"
-                    sx={{
-                        [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0, },
+                <h2 className="urbanist font-bold text-md md:text-lg dark:text-gray-300">
+                  {exp.company}
+                </h2>
 
-                        [`& .MuiTimelineConnector-root`]: { backgroundColor: '#259E93', width: '2px', minHeight: '80px', },
+                <h3 className="urbanist font-bold text-gray-500 text-md md:text-lg">
+                  {exp.date}
+                </h3>
 
-                        [`& .MuiTimelineDot-root`]: { backgroundColor: '#259E93', },
-                    }}>
-
-                    {experiences.map((exp, index) => (
-
-                        <TimelineItem key={index} className={`timeline-item ${visible ? 'show' : ''}`} style={{ transitionDelay: `${index * 0.3}s`, }} >
-
-                            <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                            </TimelineSeparator>
-
-                            <TimelineContent>
-
-                                <h2 className='urbanist font-bold text-xl md:text-2xl dark:text-white'>
-                                    {exp.title}
-                                </h2>
-
-                                <h2 className='urbanist font-bold text-md md:text-lg dark:text-gray-300'>
-                                    {exp.company}
-                                </h2>
-
-                                <h3 className='urbanist font-bold text-gray-500 text-md md:text-lg'>
-                                    {exp.date}
-                                </h3>
-
-                                <h3 className='urbanist text-sm md:text-md dark:text-gray-300'>
-                                    {exp.desc}
-                                </h3>
-
-                            </TimelineContent>
-
-                        </TimelineItem>
-
-                    ))}
-
-                </Timeline>
-
-            </div>
-        </section>
-    );
+                <h3 className="urbanist text-sm md:text-md dark:text-gray-300">
+                  {exp.desc}
+                </h3>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </div>
+    </section>
+  );
 }
 
 export default Experience;

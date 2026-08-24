@@ -2,16 +2,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Fonts */
-.urbanist{
-    font-family: "Urbanist", sans-serif;
+.urbanist {
+  font-family: "Urbanist", sans-serif;
 }
 
-.open-sans{
-    font-family: "Open Sans", sans-serif;
+.open-sans {
+  font-family: "Open Sans", sans-serif;
 }
 /* --- */
 
@@ -19,38 +19,38 @@ html {
 
 /* ====== LIGHT MODE ====== */
 :root {
-    --scroll-track: #e5e7eb;
-    --scroll-thumb: #9ca3af;
-    --scroll-thumb-hover: #6b7280;
+  --scroll-track: #e5e7eb;
+  --scroll-thumb: #9ca3af;
+  --scroll-thumb-hover: #6b7280;
 }
 
 /* ====== DARK MODE ====== */
 .dark {
-    --scroll-track: #0f172a;
-    --scroll-thumb: #b7bbc2;
-    --scroll-thumb-hover: #a5a7aa;
+  --scroll-track: #0f172a;
+  --scroll-thumb: #b7bbc2;
+  --scroll-thumb-hover: #a5a7aa;
 }
 
 /* ====== SCROLLBAR ====== */
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--scroll-track);
+  background: var(--scroll-track);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--scroll-thumb);
-    border-radius: 999px;
-    border: 2px solid transparent; /* efecto más limpio */
-    background-clip: content-box;
+  background: var(--scroll-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent; /* efecto más limpio */
+  background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--scroll-thumb-hover);
+  background: var(--scroll-thumb-hover);
 }
 
 /* --- */
@@ -58,20 +58,20 @@ html {
 /* Animaciones del experience */
 
 .timeline-item {
-    opacity: 0;
-    transform: translateY(-40px) scale(0.98);
-    filter: blur(4px);
+  opacity: 0;
+  transform: translateY(-40px) scale(0.98);
+  filter: blur(4px);
 
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        filter 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease;
 }
 
 .timeline-item.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 /* --- */
@@ -79,50 +79,122 @@ html {
 /* Animaciones de los proyectos */
 
 .proyect-card {
-    opacity: 0;
+  opacity: 0;
 
-    transform:
-        translateY(50px)
-        scale(0.98);
+  transform: translateY(50px) scale(0.98);
 
-    filter: blur(6px);
+  filter: blur(6px);
 
-    transition:
-        opacity 0.4s ease,
-        transform 0.4s ease,
-        filter 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    filter 0.4s ease;
 
-    will-change:
-        opacity,
-        transform,
-        filter;
+  will-change: opacity, transform, filter;
 }
 
 .proyect-card.show {
-    opacity: 1;
+  opacity: 1;
 
-    transform:
-        translateY(0)
-        scale(1);
+  transform: translateY(0) scale(1);
 
-    filter: blur(0);
+  filter: blur(0);
+}
+
+.proyect-card.show {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.proyect-card.show:hover {
+  transform: translateY(-4px) scale(1.005);
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
+
+.project-image-enter {
+  animation: project-image-enter 0.35s ease-out;
+}
+
+.skill-chip {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.skill-chip-show {
+  animation: skill-chip-enter 0.4s ease-out forwards;
 }
 
 /* --- */
 
-
 @keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in-up {
-    animation: fade-in-up 0.7s ease-out forwards;
+  animation: fade-in-up 0.7s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes project-image-enter {
+  from {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes skill-chip-enter {
+  from {
     opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .proyect-card,
+  .skill-chip {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
