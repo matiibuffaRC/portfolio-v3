@@ -29,12 +29,7 @@ function Proyects() {
                 <div>
                     <div className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
                         {OPTIONS.map((option) => (
-                        <button
-                            type="button"
-                            key={option}
-                            onClick={() => handleOption(option)}
-                            className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#259E93] ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830]" : ""}`}
-                        >
+                        <button type="button" key={option} onClick={() => handleOption(option)} className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#259E93] ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830]" : ""}`} >
                             {option}
                         </button>
                         ))}

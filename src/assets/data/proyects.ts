@@ -88,7 +88,7 @@ const proyects: Proyect[] = [
     images: [cover5, img1proyect5, img2proyect5, img3proyect5],
     category: "Backend",
     url: "",
-    state: "Sin terminar",
+    state: "educational",
     code: "https://github.com/matiibuffaRC/TuTurnoYa",
   },
 ];
