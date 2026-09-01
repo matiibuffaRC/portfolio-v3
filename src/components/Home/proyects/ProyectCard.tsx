@@ -10,7 +10,7 @@ type Proyect = {
     url: string;
     state: "finished" | "demo" | "Sin terminar" | "educational";
     code: string;
-};
+    };
 
 type ProyectCardProps = {
     proyect: Proyect;
@@ -24,7 +24,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
     const currentImage = proyect.images[selected];
     const isEducational = proyect.state === "educational";
-    const hasWebsite = proyect.state !== "Sin terminar";
+    const hasWebsite = proyect.state !== "Sin terminar" && proyect.url !== "";
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -59,12 +59,12 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 <div className="flex flex-row items-center gap-2">
                     {hasWebsite && (
                         <div>
-                            <a href={proyect.url} target="__blank" className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-transform duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:text-white hover:bg-gray-500"}`} >
+                            <a href={proyect.url} target="_blank" rel="noopener noreferrer" className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-transform duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state == "finished" ? "bg-[#25A9BC] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`} >
                                 {proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}
                             </a>
                         </div>
                     )}
-                    <a href={proyect.code} target="__blank" className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 dark:hover:bg-[#1a2530] hover:bg-gray-400" >
+                    <a href={proyect.code} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 dark:hover:bg-[#1a2530] hover:bg-gray-400" >
                         <img src={GithubIcon} alt="Github SVG icon" className="h-5 w-5 dark:invert" />
                         <span className="urbanist font-bold">
                             Código
