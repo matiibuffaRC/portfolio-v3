@@ -70,19 +70,19 @@ function Experience() {
                         </TimelineSeparator>
 
                         <TimelineContent>
-                            <h2 className="urbanist font-bold text-xl md:text-2xl dark:text-white">
+                            <h2 className="urbanist font-bold text-xl md:text-2xl text-black dark:text-white">
                                 {exp.title}
                             </h2>
 
-                            <h2 className="urbanist font-bold text-md md:text-lg dark:text-gray-300">
+                            <h2 className="urbanist font-bold text-md md:text-lg text-black dark:text-gray-300">
                                 {exp.company}
                             </h2>
 
-                            <h3 className="urbanist font-bold text-gray-500 text-md md:text-lg">
+                            <h3 className="urbanist font-semibold text-gray-500 dark:text-gray-400 text-md md:text-lg">
                                 {exp.date}
                             </h3>
 
-                            <h3 className="urbanist text-sm md:text-md dark:text-gray-300">
+                            <h3 className="urbanist text-sm md:text-md dark:text-gray-200">
                                 {exp.desc}
                             </h3>
                         </TimelineContent>
