@@ -5,7 +5,7 @@ import ScrollIndicator from "./ScrollIndicator";
 
 function Inicie() {
     return (
-        <section id="inicio" className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] p-5 min-h-screen flex flex-col items-center justify-center relative" >
+        <section id="inicio" className="scroll-mt-18 dark:bg-[#121820] bg-white p-5 min-h-screen flex flex-col items-center justify-center relative" >
             <div className="flex flex-col items-center">
                 <h1 className="animate-fade-in-up text-center text-[#151B23] dark:text-[#E3F6F5] text-5xl md:text-7xl urbanist font-bold">
                     Matías Buffa
@@ -15,13 +15,13 @@ function Inicie() {
                 </h2>
                 
                 <div className="animate-fade-in-up [animation-delay:450ms] flex flex-row justify-center gap-2 px-4 my-3 w-full">
-                    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
-                        <a title="Descargar curriculum vitae" aria-label="Descargar curriculum vitae de Matías Buffa" href="/MatiasBuffaCVP.pdf" target="_blank" rel="noopener noreferrer" className="block text-[#259E93] urbanist font-bold" >
+                    <div className="bg-[#3998B6] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
+                        <a title="Descargar curriculum vitae" aria-label="Descargar curriculum vitae de Matías Buffa" href="/MatiasBuffaCVP.pdf" target="_blank" rel="noopener noreferrer" className="block text-white urbanist font-bold" >
                         Ver CV
                         </a>
                     </div>
-                    <div className="bg-[#E3F6F5] max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea]">
-                        <a title="Visitar LinkedIn de Matías Buffa" aria-label="Visitar perfil de LinkedIn de Matías Buffa" href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="_blank" rel="noopener noreferrer" className="block text-[#259E93] urbanist font-bold" >
+                    <div className="bg-transparent max-w-32 flex-1 text-center py-1 rounded-2xl transition-colors hover:bg-[#c9ecea] border border-[#3998B6] dark:border-white">
+                        <a title="Visitar LinkedIn de Matías Buffa" aria-label="Visitar perfil de LinkedIn de Matías Buffa" href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="_blank" rel="noopener noreferrer" className="block text-[#259E93] dark:text-white urbanist font-bold" >
                         LinkedIn
                         </a>
                     </div>
