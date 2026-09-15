@@ -15,14 +15,14 @@ function Inicie() {
                 </h2>
                 
                 <div className="animate-fade-in-up [animation-delay:450ms] flex flex-row justify-center gap-2 px-4 my-3 w-full">
-                    <div className="bg-[#3998B6] max-w-32 flex-1 text-center py-1 rounded-4xl transition-colors hover:bg-[#c9ecea]">
+                    <div className="bg-[#087EA4] max-w-32 flex-1 text-center py-1 rounded-4xl transition-colors hover:bg-[#3998B6]">
                         <a title="Descargar curriculum vitae" aria-label="Descargar curriculum vitae de Matías Buffa" href="/MatiasBuffaCVP.pdf" target="_blank" rel="noopener noreferrer" className="text-lg block text-white urbanist font-bold select-none" >
-                        Ver CV
+                            Ver CV
                         </a>
                     </div>
-                    <div className="bg-transparent max-w-32 flex-1 text-center py-1 rounded-4xl transition-colors hover:bg-[#c9ecea] border border-[#3998B6] dark:border-white">
-                        <a title="Visitar LinkedIn de Matías Buffa" aria-label="Visitar perfil de LinkedIn de Matías Buffa" href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="_blank" rel="noopener noreferrer" className="text-lg block text-[#259E93] dark:text-white urbanist font-bold select-none" >
-                        LinkedIn
+                    <div className="bg-transparent max-w-32 flex-1 text-center py-1 rounded-4xl transition-colors hover:bg-[#3998B6] border border-[#087EA4] dark:border-white">
+                        <a title="Visitar LinkedIn de Matías Buffa" aria-label="Visitar perfil de LinkedIn de Matías Buffa" href="https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/" target="_blank" rel="noopener noreferrer" className="text-lg block text-[#087EA4] dark:text-white urbanist font-bold select-none" >
+                            LinkedIn
                         </a>
                     </div>
                 </div>

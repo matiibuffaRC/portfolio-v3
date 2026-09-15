@@ -36,18 +36,10 @@ function AboutMe() {
             <div className="flex flex-row flex-wrap">
             {skill.technologies.map((technology, technologyIndex) => {
                 return (
-                <span
-                    key={technology}
-                    style={{ animationDelay: `${technologyIndex * 70}ms` }}
-                    className={`skill-chip ${visible ? "skill-chip-show" : ""} flex flex-row items-center gap-1 m-1 px-4 py-2 dark:bg-[#1e242c] bg-gray-300 rounded-full transition-all duration-300 ease-out hover:scale-103 hover:shadow-md hover:bg-[#259E93] dark:hover:bg-[#259E93] hover:-translate-y-0.5 cursor-default group`}
-                >
-                    <img
-                    src={skill.icon}
-                    alt=""
-                    className="dark:invert w-4 h-4 transition-transform duration-300 group-hover:invert-0 group-hover:brightness-0 group-hover:saturate-100"
-                    />
+                <span key={technology} style={{ animationDelay: `${technologyIndex * 70}ms` }} className={`skill-chip ${visible ? "skill-chip-show" : ""} flex flex-row items-center gap-1 m-1 px-4 py-2 dark:bg-[#1e242c] bg-gray-300 rounded-full transition-all duration-300 ease-out hover:scale-103 hover:shadow-md hover:bg-[#259E93] dark:hover:bg-[#087EA4] hover:-translate-y-0.5 cursor-default group`} >
+                    <img src={skill.icon} alt="" className="dark:invert w-4 h-4 transition-transform duration-300 group-hover:invert-0 group-hover:brightness-0 group-hover:saturate-100" />
                     <span className="dark:text-[#D1D7E0] text-[#151B23] text-xs font-bold open-sans transition-colors duration-300 group-hover:text-white">
-                    {technology}
+                        {technology}
                     </span>
                 </span>
                 );
@@ -60,7 +52,7 @@ function AboutMe() {
     return (
         <section id="sobre-mi" ref={sectionRef} className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] pt-17.5 pb-10 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center" >
             <div>
-                <h2 className="urbanist font-bold text-[#259E93] text-4xl w-full pb-3">
+                <h2 className="urbanist font-bold text-[#087EA4] text-4xl w-full pb-3">
                     UN POCO SOBRE MÍ
                 </h2>
                 <div className="grid grid-cols-1 gap-2.5 md:grid-cols-2 md:grid-rows-2 max-w-5xl">

@@ -18,7 +18,7 @@ function Proyects() {
         <section id="proyectos" className="scroll-mt-18 dark:bg-[#212830] bg-[#F3F4F6] dark:text-[#D1D7E0] text-[#151B23] py-17.5 p-5 flex flex-col items-center" >
             <div className="w-full md:max-w-4xl lg:max-w-5xl flex flex-col gap-2">
                 <div>
-                    <h2 className="urbanist font-bold text-[#259E93] text-4xl">
+                    <h2 className="urbanist font-bold text-[#087EA4] text-4xl">
                         PROYECTOS
                     </h2>
                     <h3 className="open-sans font-semibold text-2xl">

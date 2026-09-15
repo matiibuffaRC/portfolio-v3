@@ -50,44 +50,41 @@ function Experience() {
     return (
         <section id="experiencia" ref={sectionRef} className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5" >
             <div className="m-auto flex flex-col items-center lg:max-w-5xl">
-                <h2 className="urbanist font-bold text-[#259E93] text-4xl w-full pb-3">
+                <h2 className="urbanist font-bold text-[#087EA4] text-4xl w-full pb-3">
                     EXPERIENCIA
                 </h2>
 
-                <Timeline className="w-full md:max-w-200" position="right" sx={{
-                    [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0 },
+                <Timeline className="w-full md:max-w-200" position="right" sx={{ [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0, }, [`& .MuiTimelineConnector-root`]: { backgroundColor: "#087EA4", width: "2px", minHeight: "80px", }, [`& .MuiTimelineDot-root`]: { backgroundColor: "#087EA4", boxShadow: "none", },}}>
+                    {experiences.map((exp, index) => (
+                        <TimelineItem key={index} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.3}s` }} >
+                            <TimelineSeparator>
+                                <TimelineDot />
+                                <TimelineConnector />
+                            </TimelineSeparator>
 
-                    [`& .MuiTimelineConnector-root`]: { backgroundColor: "#259E93", width: "2px", minHeight: "80px", },
+                            <TimelineContent>
+                                {/* Título */}
+                                <h2 className="urbanist font-bold text-xl md:text-2xl text-[#243054] dark:text-white">
+                                    {exp.title}
+                                </h2>
 
-                    [`& .MuiTimelineDot-root`]: { backgroundColor: "#259E93" },
-                }}
-                >
-                {experiences.map((exp, index) => (
-                    <TimelineItem key={index} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.3}s` }} >
-                        <TimelineSeparator>
-                            <TimelineDot />
-                            <TimelineConnector />
-                        </TimelineSeparator>
+                                {/* Empresa */}
+                                <h2 className="urbanist font-bold text-md md:text-lg text-[#087EA4] dark:text-[#087EA4]">
+                                    {exp.company}
+                                </h2>
 
-                        <TimelineContent>
-                            <h2 className="urbanist font-bold text-xl md:text-2xl text-black dark:text-white">
-                                {exp.title}
-                            </h2>
+                                {/* Fecha */}
+                                <h3 className="urbanist font-semibold text-md md:text-lg text-gray-500 dark:text-gray-400">
+                                    {exp.date}
+                                </h3>
 
-                            <h2 className="urbanist font-bold text-md md:text-lg text-black dark:text-gray-300">
-                                {exp.company}
-                            </h2>
-
-                            <h3 className="urbanist font-semibold text-gray-500 dark:text-gray-400 text-md md:text-lg">
-                                {exp.date}
-                            </h3>
-
-                            <h3 className="urbanist text-sm md:text-md dark:text-gray-200">
-                                {exp.desc}
-                            </h3>
-                        </TimelineContent>
-                    </TimelineItem>
-                ))}
+                                {/* Descripción */}
+                                <h3 className="urbanist text-sm md:text-md font-semibold leading-relaxed text-gray-600 dark:text-gray-300">
+                                    {exp.desc}
+                                </h3>
+                            </TimelineContent>
+                        </TimelineItem>
+                    ))}
                 </Timeline>
             </div>
         </section>
