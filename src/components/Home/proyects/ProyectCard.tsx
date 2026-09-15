@@ -59,7 +59,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 <div className="flex flex-row items-center gap-2">
                     {hasWebsite && (
                         <div>
-                            <a href={proyect.url} target="_blank" rel="noopener noreferrer" className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-transform duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state == "finished" ? "bg-[#087EA4] hover:bg-[#1d9caf]" : "bg-gray-400 hover:bg-gray-500"}`} >
+                            <a href={proyect.url} target="_blank" rel="noopener noreferrer" className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-transform duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state == "finished" ? "bg-[#087EA4] hover:bg-[#1d9caf] dark:bg-[#58C4DC]" : "bg-gray-400 hover:bg-gray-500"}`} >
                                 {proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}
                             </a>
                         </div>

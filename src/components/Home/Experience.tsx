@@ -50,7 +50,7 @@ function Experience() {
     return (
         <section id="experiencia" ref={sectionRef} className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] py-17.5 px-5" >
             <div className="m-auto flex flex-col items-center lg:max-w-5xl">
-                <h2 className="urbanist font-bold text-[#087EA4] text-4xl w-full pb-3">
+                <h2 className="urbanist font-bold text-[#087EA4] dark:text-[#58C4DC] text-4xl w-full pb-3">
                     EXPERIENCIA
                 </h2>
 
@@ -69,7 +69,7 @@ function Experience() {
                                 </h2>
 
                                 {/* Empresa */}
-                                <h2 className="urbanist font-bold text-md md:text-lg text-[#087EA4] dark:text-[#087EA4]">
+                                <h2 className="urbanist font-bold text-md md:text-lg text-[#087EA4] dark:text-[#58C4DC]">
                                     {exp.company}
                                 </h2>
 
