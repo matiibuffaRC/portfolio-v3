@@ -116,9 +116,7 @@ html {
   animation: fade-in 0.25s ease-out both;
 }
 
-.project-image-enter {
-  animation: project-image-enter 0.35s ease-out;
-}
+
 
 .skill-chip {
   opacity: 0;
