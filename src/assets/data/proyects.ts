@@ -23,6 +23,11 @@ import img1proyect5 from "../imgs/project5-img2.webp";
 import img2proyect5 from "../imgs/project5-img3.webp";
 import img3proyect5 from "../imgs/project5-img4.webp";
 
+import cover6 from "../imgs/project6-img1.webp";
+import img1proyect6 from "../imgs/project6-img2.webp";
+import img2proyect6 from "../imgs/project6-img3.webp";
+import img3proyect6 from "../imgs/project6-img4.webp";
+
 type ProyectState = "finished" | "demo" | "Sin terminar" | "educational";
 
 type Proyect = {
@@ -90,6 +95,17 @@ const proyects: Proyect[] = [
     url: "",
     state: "educational",
     code: "https://github.com/matiibuffaRC/TuTurnoYa",
+  },
+  {
+    id: 6,
+    title: "Canchita | Turnos",
+    description:
+      "Sistema de reserva de turnos para predios deportivos. Permite la selección de predio deportivo de gusta, cancha con fecha y horario de acuerdo a la comodidad del usuario. Para el administrador se dispone de un dashboard con la información de sus predios y canchas junto a un calendario con los cronogramas de todas sus canchas de acuerdo al día que seleccione.",
+    images: [cover6, img1proyect6, img2proyect6, img3proyect6],
+    category: "Fullstack",
+    url: "",
+    state: "Sin terminar",
+    code: "https://github.com/matiibuffaRC/canchita",
   },
 ];
 

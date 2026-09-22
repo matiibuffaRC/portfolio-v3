@@ -36,7 +36,7 @@ function AboutMe() {
             <div className="flex flex-row flex-wrap">
             {skill.technologies.map((technology, technologyIndex) => {
                 return (
-                <span key={technology} style={{ animationDelay: `${technologyIndex * 70}ms` }} className={`skill-chip ${visible ? "skill-chip-show" : ""} flex flex-row items-center gap-1 m-1 px-4 py-2 dark:bg-[#1e242c] bg-gray-300 rounded-full transition-all duration-300 ease-out hover:scale-103 hover:shadow-md hover:bg-[#259E93] dark:hover:bg-[#58C4DC] hover:-translate-y-0.5 cursor-default group`} >
+                <span key={technology} style={{ animationDelay: `${technologyIndex * 70}ms` }} className={`skill-chip ${visible ? "skill-chip-show" : ""} flex flex-row items-center gap-1 m-1 px-4 py-2 dark:bg-[#1e242c] bg-gray-300 rounded-full transition-all duration-300 ease-out hover:scale-103 hover:shadow-md hover:bg-[#087EA4] dark:hover:bg-[#58C4DC] hover:-translate-y-0.5 cursor-default group`} >
                     <img src={skill.icon} alt="" className="dark:invert w-4 h-4 transition-transform duration-300 group-hover:invert-0 group-hover:brightness-0 group-hover:saturate-100" />
                     <span className="dark:text-[#D1D7E0] text-[#151B23] text-xs font-bold open-sans transition-colors duration-300 group-hover:text-white">
                         {technology}

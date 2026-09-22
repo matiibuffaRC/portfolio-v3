@@ -32,7 +32,7 @@ function ScrollIndicator() {
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="animate-bounce text-3xl text-[#259E93]">
+      <div className="animate-bounce text-3xl text-[#087EA4] dark:text-[#58C4DC]">
         ↓
       </div>
     </div>
