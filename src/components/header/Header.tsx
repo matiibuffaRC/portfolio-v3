@@ -44,12 +44,12 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     return () => observer.disconnect();
     }, []);
 
-    const linkClass = (id: string) => `cursor-pointer hover:bg-gray-200 dark:hover:bg-[#252C34] transition-all duration-700 py-1 px-4 rounded-3xl ${ activeSection === id ? "bg-[#E3F6F5] dark:bg-[#252C34] text-[#176b68] dark:text-[#D1F7F3]" : ""}`;
+    const linkClass = (id: string) => `cursor-pointer hover:bg-gray-200 dark:hover:bg-[#252C34] transition-all duration-700 py-1 px-4 rounded-3xl ${ activeSection === id ? "bg-[#c4e4ee] dark:bg-[#252C34] text-[#176b68] dark:text-[#D1F7F3]" : ""}`;
 
     return (
         <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full z-10">
             <div className="h-full flex flex-row items-center gap-2">
-                <div className="">
+                <div className="flex items-center">
                     <button type="button" aria-label="Ir a inicio" onClick={() => scrollToSection("inicio")} className="p-0 bg-transparent border-0 focus:outline-none">
                         <img src={profileImage} alt="Matías Buffa image" className="h-10 w-10 rounded-full"/>
                     </button>
@@ -64,7 +64,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
             {/* Menú desktop*/}
             <div className="flex flex-row gap-2">
-                <nav aria-label="Navegación principal" className="dark:text-[#D1D7E0] text-[#151B23] urbanist font-semibold text-md hidden md:flex gap-2" >
+                <nav aria-label="Navegación principal" className="dark:text-[#D1D7E0] text-[#087EA4] urbanist font-semibold text-md hidden md:flex gap-2" >
                     <button type="button" onClick={() => scrollToSection("inicio")} className={linkClass("inicio")} >
                         Inicio
                     </button>
