@@ -47,7 +47,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     const linkClass = (id: string) => `cursor-pointer hover:bg-gray-200 dark:hover:bg-[#252C34] transition-all duration-700 py-1 px-4 rounded-3xl ${ activeSection === id ? "bg-[#c4e4ee] dark:bg-[#252C34] text-[#176b68] dark:text-[#D1F7F3]" : ""}`;
 
     return (
-        <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full z-10">
+        <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full z-100">
             <div className="h-full flex flex-row items-center gap-2">
                 <div className="flex items-center">
                     <button type="button" aria-label="Ir a inicio" onClick={() => scrollToSection("inicio")} className="p-0 bg-transparent border-0 focus:outline-none">
