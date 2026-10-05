@@ -2,9 +2,7 @@ import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "reac
 
 /* ───────── Configuración: editá esto con tus datos ───────── */
 const CONFIG = {
-    // Endpoint de Formspree (https://formspree.io) o similar. Guardalo en .env:
-    // Vite: VITE_FORM_ENDPOINT   |   Next.js: NEXT_PUBLIC_FORM_ENDPOINT
-    endpoint: import.meta.env.VITE_FORM_ENDPOINT as string,
+    endpoint: "https://formspree.io/f/xvkzgpwj",
     email: "tu@correo.com",
     telefono: "+54 351 000 0000", // dejalo vacío ("") para ocultarlo
     linkedin: "https://www.linkedin.com/in/tu-usuario",
@@ -37,19 +35,22 @@ function validate(v: FormValues): FormErrors {
 /* Marca: #087EA4 — fondo: #F9FAFC. Inputs "rellenos" sin borde visible, como en la referencia */
 const inputClass =
     "w-full rounded-lg border border-transparent bg-slate-100 px-3 py-2.5 text-sm text-slate-800 " +
+    "dark:border-[#3A4654] dark:bg-[#1e242c] dark:text-[#D1D7E0] dark:placeholder:text-slate-500 " +
     "placeholder:text-slate-400 transition-colors motion-reduce:transition-none " +
-    "hover:border-[#087EA4]/50 focus-visible:border-[#087EA4] focus-visible:bg-white " +
-    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/20 " +
-    "aria-invalid:border-red-700 aria-invalid:bg-red-50 aria-invalid:focus-visible:ring-red-700/20";
+    "hover:border-[#087EA4]/50 dark:hover:border-[#58C4DC]/50 " +
+    "focus-visible:border-[#087EA4] dark:focus-visible:border-[#58C4DC] focus-visible:bg-white dark:focus-visible:bg-[#252C34] " +
+    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/20 dark:focus-visible:ring-[#58C4DC]/20 " +
+    "aria-invalid:border-red-700 aria-invalid:bg-red-50 aria-invalid:focus-visible:ring-red-700/20 " +
+    "dark:aria-invalid:border-red-400 dark:aria-invalid:bg-red-950/40";
 
 const linkClass =
-    "rounded font-semibold text-[#087EA4] underline-offset-4 hover:underline " +
-    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30";
+    "rounded font-semibold text-[#087EA4] dark:text-[#58C4DC] underline-offset-4 hover:underline " +
+    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30 dark:focus-visible:ring-[#58C4DC]/30";
 
 function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: ReactNode }) {
     return (
         <div className="flex min-w-0 flex-col gap-1.5">
-            <label htmlFor={id} className="text-xs font-medium text-slate-600">
+            <label htmlFor={id} className="text-xs font-medium text-slate-600 dark:text-[#D1D7E0]">
                 {label}
             </label>
             {children}
@@ -117,17 +118,17 @@ export default function Contacto() {
         errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
     return (
-        <section id="contacto" className="px-4 py-12 sm:py-20" aria-labelledby="contacto-titulo">
-            <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
+        <section id="contacto" className="bg-[#F9FAFC] px-4 py-12 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
+            <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm transition-colors dark:border-gray-800 dark:bg-[#151B23] sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
                 {/* ── Columna izquierda: texto y datos de contacto ── */}
                 <div>
-                    <p className="text-xs font-medium uppercase tracking-widest text-slate-500">
+                    <p className="text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
                         Estoy para ayudarte
                     </p>
-                    <h2 id="contacto-titulo" className="mt-3 text-4xl font-normal leading-tight tracking-tight text-slate-900 sm:text-5xl" >
+                    <h2 id="contacto-titulo" className="mt-3 text-4xl font-normal leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl" >
                         <strong className="font-bold">Hablemos</strong> de tu próximo proyecto
                     </h2>
-                    <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600 dark:text-[#D1D7E0]">
                         ¿Tenés una propuesta, una idea o querés colaborar? Escribime y te respondo en un par de días.
                     </p>
 
@@ -135,8 +136,8 @@ export default function Contacto() {
                         <li className="flex items-center gap-4">
                             <span className="text-[#087EA4]"><MailIcon /></span>
                             <div>
-                                <p className="text-xs text-slate-500">Correo</p>
-                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} text-slate-900 hover:text-[#087EA4]`}>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">Correo</p>
+                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}>
                                 {CONFIG.email}
                                 </a>
                             </div>
@@ -145,10 +146,10 @@ export default function Contacto() {
                         <li className="flex items-center gap-4">
                             <span className="text-[#087EA4]"><PhoneIcon /></span>
                             <div>
-                                <p className="text-xs text-slate-500">Teléfono</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">Teléfono</p>
                                 <a
                                     href={`tel:${CONFIG.telefono.replace(/[^\d+]/g, "")}`}
-                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4]`}
+                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}
                                 >
                                     {CONFIG.telefono}
                                 </a>
@@ -157,7 +158,7 @@ export default function Contacto() {
                         )}
                     </ul>
 
-                    <p className="mt-8 text-sm text-slate-600">
+                    <p className="mt-8 text-sm text-slate-600 dark:text-[#D1D7E0]">
                         También en{" "}
                         <a href={CONFIG.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>LinkedIn</a>
                         {" y "}
@@ -166,11 +167,11 @@ export default function Contacto() {
                 </div>
 
                 {/* ── Columna derecha: tarjeta del formulario ── */}
-                <div className="w-full rounded-3xl bg-white p-5 shadow-xl shadow-slate-900/10 sm:p-7 lg:max-w-md lg:justify-self-end">
+                <div className="w-full rounded-3xl bg-white p-5 shadow-xl shadow-slate-900/10 transition-colors dark:bg-[#1e242c] dark:shadow-black/20 sm:p-7 lg:max-w-md lg:justify-self-end">
                     {status === "success" ? (
                         <div role="status" className="py-10 text-center">
-                            <p className="text-lg font-semibold text-slate-900">¡Gracias por escribirme!</p>
-                            <p className="mt-1 text-sm text-slate-600">Recibí tu mensaje y te voy a responder pronto.</p>
+                            <p className="text-lg font-semibold text-slate-900 dark:text-white">¡Gracias por escribirme!</p>
+                            <p className="mt-1 text-sm text-slate-600 dark:text-[#D1D7E0]">Recibí tu mensaje y te voy a responder pronto.</p>
                             <button type="button" onClick={() => setStatus("idle")} className={`${linkClass} mt-5 text-sm`}>
                                 Enviar otro mensaje
                             </button>
@@ -208,7 +209,7 @@ export default function Contacto() {
                                         name="motivo" 
                                         value={values.motivo} 
                                         onChange={handleChange}
-                                        className={`${inputClass} appearance-none pr-9 ${values.motivo ? "" : "text-slate-400"}`}
+                                        className={`${inputClass} appearance-none pr-9 ${values.motivo ? "" : "text-slate-400 dark:text-slate-500"}`}
                                         {...a11y("motivo")}>
                                         <option value="">Seleccionar…</option>
                                         <option value="laboral">Propuesta laboral</option>
@@ -218,7 +219,7 @@ export default function Contacto() {
                                     </select>
                                     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
                                         strokeLinecap="round" strokeLinejoin="round"
-                                        className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500">
+                                        className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500 dark:text-slate-400">
                                         <path d="m5 8 5 5 5-5" />
                                     </svg>
                                 </div>
@@ -235,7 +236,7 @@ export default function Contacto() {
                                     className={`${inputClass} min-h-28 resize-y`}
                                     {...a11y("mensaje")} 
                                 />
-                                <p className="text-right text-xs text-slate-400">{values.mensaje.length}/{MAX_MENSAJE}</p>
+                                <p className="text-right text-xs text-slate-400 dark:text-slate-500">{values.mensaje.length}/{MAX_MENSAJE}</p>
                             </Field>
 
                             {/* Honeypot: oculto para personas y lectores de pantalla */}
@@ -253,7 +254,7 @@ export default function Contacto() {
                             </div>
 
                             {status === "error" && (
-                                <p role="alert" className="rounded-lg border border-red-700/30 bg-red-50 px-3 py-2.5 text-sm text-red-700">
+                                <p role="alert" className="rounded-lg border border-red-700/30 bg-red-50 px-3 py-2.5 text-sm text-red-700 dark:border-red-400/30 dark:bg-red-950/40 dark:text-red-300">
                                     No pude enviar el mensaje. Probá de nuevo o escribime a{" "}
                                     <a href={`mailto:${CONFIG.email}`} className="font-semibold underline">{CONFIG.email}</a>.
                                 </p>
@@ -263,9 +264,9 @@ export default function Contacto() {
                             <button
                                 type="submit"
                                 disabled={status === "sending"}
-                                className="group mt-1 inline-flex w-full items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
+                                className="group mt-1 inline-flex w-full items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] dark:bg-[#58C4DC] dark:text-[#151B23] dark:hover:bg-[#3998B6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 dark:focus-visible:ring-[#58C4DC]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
                             >
-                                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-[#087EA4]">
+                                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-[#087EA4] dark:bg-[#151B23] dark:text-[#58C4DC]">
                                     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
                                         strokeLinecap="round" strokeLinejoin="round"
                                         className="size-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none">
