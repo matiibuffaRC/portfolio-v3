@@ -1,222 +1,283 @@
 import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
 
+/* ───────── Configuración: editá esto con tus datos ───────── */
+const CONFIG = {
+    // Endpoint de Formspree (https://formspree.io) o similar. Guardalo en .env:
+    // Vite: VITE_FORM_ENDPOINT   |   Next.js: NEXT_PUBLIC_FORM_ENDPOINT
+    endpoint: import.meta.env.VITE_FORM_ENDPOINT as string,
+    email: "tu@correo.com",
+    telefono: "+54 351 000 0000", // dejalo vacío ("") para ocultarlo
+    linkedin: "https://www.linkedin.com/in/tu-usuario",
+    github: "https://github.com/tu-usuario",
+};
+
 interface FormValues {
-  nombre: string;
-  correo: string;
-  telefono: string;
-  asunto: string;
-  mensaje: string;
-  acepta: boolean;
+    nombre: string;
+    correo: string;
+    motivo: string;
+    mensaje: string;
+    empresa: string; // honeypot anti-spam
 }
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
+type Status = "idle" | "sending" | "success" | "error";
 
-const INITIAL: FormValues = {
-  nombre: "",
-  correo: "",
-  telefono: "",
-  asunto: "",
-  mensaje: "",
-  acepta: false,
-};
-
-const MAX_MENSAJE = 500;
+const INITIAL: FormValues = { nombre: "", correo: "", motivo: "", mensaje: "", empresa: "" };
+const MAX_MENSAJE = 800;
 
 function validate(v: FormValues): FormErrors {
-  const e: FormErrors = {};
-  if (v.nombre.trim().length < 2) e.nombre = "Escribe tu nombre completo.";
-  if (!/^\S+@\S+\.\S+$/.test(v.correo)) e.correo = "Ingresa un correo válido, por ejemplo nombre@dominio.com.";
-  if (v.telefono && !/^[\d\s+()-]{7,}$/.test(v.telefono)) e.telefono = "Usa solo números, espacios, + o guiones.";
-  if (!v.asunto) e.asunto = "Elige un asunto.";
-  if (v.mensaje.trim().length < 10) e.mensaje = "Cuéntanos un poco más (mínimo 10 caracteres).";
-  if (!v.acepta) e.acepta = "Debes aceptar para poder enviar el formulario.";
-  return e;
+    const e: FormErrors = {};
+    if (v.nombre.trim().length < 2) e.nombre = "Decime cómo te llamás.";
+    if (!/^\S+@\S+\.\S+$/.test(v.correo)) e.correo = "Ingresá un correo válido para poder responderte.";
+    if (!v.motivo) e.motivo = "Elegí el motivo de tu mensaje.";
+    if (v.mensaje.trim().length < 10) e.mensaje = "Contame un poco más (mínimo 10 caracteres).";
+    return e;
 }
 
-/* Clases reutilizables alineadas con la paleta del portafolio. */
+/* Marca: #087EA4 — fondo: #F9FAFC. Inputs "rellenos" sin borde visible, como en la referencia */
 const inputClass =
-  "w-full rounded-xl border border-gray-300 bg-[#f9fafc] px-3.5 py-3 text-[#151B23] " +
-  "placeholder:text-gray-400 dark:border-gray-700 dark:bg-[#121820] dark:text-[#D1D7E0] dark:placeholder:text-gray-500 " +
-  "transition-colors motion-reduce:transition-none " +
-  "hover:border-[#087EA4] dark:hover:border-[#58C4DC] focus-visible:border-[#087EA4] focus-visible:bg-white " +
-  "dark:focus-visible:border-[#58C4DC] dark:focus-visible:bg-[#121820] " +
-  "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/25 " +
-  "dark:focus-visible:ring-[#58C4DC]/25 aria-invalid:border-red-700 aria-invalid:bg-red-50 " +
-  "dark:aria-invalid:border-red-400 dark:aria-invalid:bg-red-950/30 aria-invalid:focus-visible:ring-red-700/20";
+    "w-full rounded-lg border border-transparent bg-slate-100 px-3 py-2.5 text-sm text-slate-800 " +
+    "placeholder:text-slate-400 transition-colors motion-reduce:transition-none " +
+    "hover:border-[#087EA4]/50 focus-visible:border-[#087EA4] focus-visible:bg-white " +
+    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/20 " +
+    "aria-invalid:border-red-700 aria-invalid:bg-red-50 aria-invalid:focus-visible:ring-red-700/20";
 
-const labelClass = "urbanist text-sm font-semibold text-[#243054] dark:text-[#D1D7E0]";
+const linkClass =
+    "rounded font-semibold text-[#087EA4] underline-offset-4 hover:underline " +
+    "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30";
 
-function Field({
-  id,
-  label,
-  error,
-  className = "",
-  children,
-}: {
-  id: string;
-  label: string;
-  error?: string;
-  className?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className={`flex min-w-0 flex-col gap-1.5 ${className}`}>
-      <label htmlFor={id} className={labelClass}>
-        {label}
-      </label>
-      {children}
-      {error && (
-        <p id={`${id}-error`} role="alert" className="text-sm text-red-700 dark:text-red-400">
-          {error}
-        </p>
-      )}
-    </div>
-  );
+function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: ReactNode }) {
+    return (
+        <div className="flex min-w-0 flex-col gap-1.5">
+            <label htmlFor={id} className="text-xs font-medium text-slate-600">
+                {label}
+            </label>
+            {children}
+            {error && <p id={`${id}-error`} role="alert" className="text-xs text-red-700">{error}</p>}
+        </div>
+    );
 }
 
-export default function Formulario() {
-  const [values, setValues] = useState<FormValues>(INITIAL);
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
+const iconProps = {
+    width: 28, height: 28, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
+    strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true,
+} as const;
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type } = e.target;
-    const next = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
-    setValues((prev) => ({ ...prev, [name]: next }));
-    if (errors[name as keyof FormValues]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
+const MailIcon = () => (
+    <svg {...iconProps}><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m4 7 8 6 8-6" /></svg>
+);
+const PhoneIcon = () => (
+    <svg {...iconProps}>
+        <path d="M5 4h3.5l1.8 4.5-2.2 1.4a11 11 0 0 0 5 5l1.4-2.2L19 14.5V18a2 2 0 0 1-2 2A13 13 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+    </svg>
+);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setSent(false);
-    const found = validate(values);
-    setErrors(found);
-    if (Object.keys(found).length > 0) {
-      document.getElementById(Object.keys(found)[0])?.focus();
-      return;
-    }
-    setSending(true);
-    try {
-      // TODO: reemplaza por tu llamada real (fetch/axios)
-      await new Promise((r) => setTimeout(r, 800));
-      setSent(true);
-      setValues(INITIAL);
-    } finally {
-      setSending(false);
-    }
-  };
+export default function Contacto() {
+    const [values, setValues] = useState<FormValues>(INITIAL);
+    const [errors, setErrors] = useState<FormErrors>({});
+    const [status, setStatus] = useState<Status>("idle");
 
-  const a11y = (name: keyof FormValues) =>
-    errors[name]
-      ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` }
-      : {};
+    const handleChange = ( e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> ) => {
+        const { name, value } = e.target;
+        setValues((prev) => ({ ...prev, [name]: value }));
+        if (errors[name as keyof FormValues]) setErrors((prev) => ({ ...prev, [name]: undefined }));
+    };
 
-  return (
-    <section id="contacto" className="scroll-mt-18 bg-[#f9fafc] px-5 py-17.5 text-[#151B23] dark:bg-[#121820] dark:text-[#D1D7E0]">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="urbanist w-full pb-3 text-4xl font-bold text-[#087EA4] dark:text-[#58C4DC]">
-          CONTACTO
-        </h2>
-        <p className="open-sans mb-7 max-w-2xl leading-relaxed text-gray-600 dark:text-gray-300">
-          ¿Tenés una idea o un proyecto en mente? Escribime y conversemos sobre cómo puedo ayudarte.
-        </p>
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="mx-auto w-full max-w-4xl rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10 dark:border-gray-800 dark:bg-[#151B23]"
-      >
-        <h3 className="urbanist mb-1 text-2xl font-bold tracking-tight text-[#243054] dark:text-white sm:text-3xl">
-          Hablemos de tu proyecto
-        </h3>
-        <p className="open-sans mb-7 leading-relaxed text-gray-600 dark:text-gray-300">
-          Completá el formulario y me pondré en contacto con vos.
-        </p>
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        if (values.empresa) return; // bot detectado
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <Field id="nombre" label="Nombre completo" error={errors.nombre}>
-            <input id="nombre" name="nombre" type="text" autoComplete="name"
-              placeholder="Tu nombre" value={values.nombre}
-              onChange={handleChange} className={inputClass} {...a11y("nombre")} />
-          </Field>
+        const found = validate(values);
+        setErrors(found);
+        if (Object.keys(found).length > 0) {
+            document.getElementById(Object.keys(found)[0])?.focus();
+            return;
+        }
 
-          <Field id="correo" label="Correo electrónico" error={errors.correo}>
-            <input id="correo" name="correo" type="email" autoComplete="email"
-              placeholder="tu correo electrónico" value={values.correo}
-              onChange={handleChange} className={inputClass} {...a11y("correo")} />
-          </Field>
+        setStatus("sending");
+        try {
+            const { empresa, ...data } = values;
+            const res = await fetch(CONFIG.endpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json", 
+                    Accept: "application/json" 
+                },
+                body: JSON.stringify(data),
+            });
+            if (!res.ok) throw new Error("Respuesta no válida");
+            setStatus("success");
+            setValues(INITIAL);
+        } catch {
+        setStatus("error");
+        }
+    };
 
-          <Field id="telefono" label="Teléfono (opcional)" error={errors.telefono}>
-            <input id="telefono" name="telefono" type="tel" autoComplete="tel"
-              placeholder="+54 000 000 0000" value={values.telefono}
-              onChange={handleChange} className={inputClass} {...a11y("telefono")} />
-          </Field>
+    const a11y = (name: keyof FormValues) =>
+        errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
-          <Field id="asunto" label="Asunto" error={errors.asunto}>
-            <select id="asunto" name="asunto" value={values.asunto}
-              onChange={handleChange} className={inputClass} {...a11y("asunto")}>
-              <option value="">Elegí un asunto</option>
-              <option value="proyecto">Desarrollo de un proyecto</option>
-              <option value="freelance">Propuesta freelance</option>
-              <option value="consulta">Consulta</option>
-              <option value="otro">Otro</option>
-            </select>
-          </Field>
+    return (
+        <section id="contacto" className="px-4 py-12 sm:py-20" aria-labelledby="contacto-titulo">
+            <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
+                {/* ── Columna izquierda: texto y datos de contacto ── */}
+                <div>
+                    <p className="text-xs font-medium uppercase tracking-widest text-slate-500">
+                        Estoy para ayudarte
+                    </p>
+                    <h2 id="contacto-titulo" className="mt-3 text-4xl font-normal leading-tight tracking-tight text-slate-900 sm:text-5xl" >
+                        <strong className="font-bold">Hablemos</strong> de tu próximo proyecto
+                    </h2>
+                    <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600">
+                        ¿Tenés una propuesta, una idea o querés colaborar? Escribime y te respondo en un par de días.
+                    </p>
 
-          <Field id="mensaje" label="Mensaje" error={errors.mensaje} className="sm:col-span-2">
-            <textarea id="mensaje" name="mensaje" maxLength={MAX_MENSAJE}
-              placeholder="Contame brevemente sobre tu idea o consulta..." value={values.mensaje}
-              onChange={handleChange}
-              className={`${inputClass} min-h-32 resize-y`} {...a11y("mensaje")} />
-            <p className="text-right text-xs text-gray-500 dark:text-gray-400">
-              {values.mensaje.length}/{MAX_MENSAJE}
-            </p>
-          </Field>
+                    <ul className="mt-8 space-y-5">
+                        <li className="flex items-center gap-4">
+                            <span className="text-[#087EA4]"><MailIcon /></span>
+                            <div>
+                                <p className="text-xs text-slate-500">Correo</p>
+                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} text-slate-900 hover:text-[#087EA4]`}>
+                                {CONFIG.email}
+                                </a>
+                            </div>
+                        </li>
+                        {CONFIG.telefono && (
+                        <li className="flex items-center gap-4">
+                            <span className="text-[#087EA4]"><PhoneIcon /></span>
+                            <div>
+                                <p className="text-xs text-slate-500">Teléfono</p>
+                                <a
+                                    href={`tel:${CONFIG.telefono.replace(/[^\d+]/g, "")}`}
+                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4]`}
+                                >
+                                    {CONFIG.telefono}
+                                </a>
+                            </div>
+                        </li>
+                        )}
+                    </ul>
 
-          <div className="flex flex-col gap-1.5 sm:col-span-2">
-            <label htmlFor="acepta" className="flex cursor-pointer items-start gap-2.5 text-sm leading-snug text-[#243054] dark:text-[#D1D7E0]">
-              <input id="acepta" name="acepta" type="checkbox"
-                checked={values.acepta} onChange={handleChange}
-                className="mt-0.5 size-4.5 shrink-0 accent-[#087EA4] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30"
-                {...a11y("acepta")} />
-              <span>Acepto que usen mis datos para responder a esta consulta.</span>
-            </label>
-            {errors.acepta && (
-              <p id="acepta-error" role="alert" className="text-sm text-red-700 dark:text-red-400">
-                {errors.acepta}
-              </p>
-            )}
-          </div>
-        </div>
+                    <p className="mt-8 text-sm text-slate-600">
+                        También en{" "}
+                        <a href={CONFIG.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>LinkedIn</a>
+                        {" y "}
+                        <a href={CONFIG.github} target="_blank" rel="noopener noreferrer" className={linkClass}>GitHub</a>.
+                    </p>
+                </div>
 
-        <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-          <button
-            type="button"
-            onClick={() => { setValues(INITIAL); setErrors({}); setSent(false); }}
-            className="rounded-xl border border-gray-300 px-5 py-3 font-semibold text-[#087EA4] transition-colors hover:border-[#087EA4] hover:bg-[#087EA4]/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30 motion-reduce:transition-none dark:border-gray-700 dark:text-[#58C4DC] dark:hover:border-[#58C4DC] dark:hover:bg-[#58C4DC]/10"
-          >
-            Limpiar
-          </button>
-          <button
-            type="submit"
-            disabled={sending}
-            className="rounded-xl bg-[#087EA4] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#066686] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none dark:bg-[#58C4DC] dark:text-[#121820] dark:hover:bg-[#7bd3e5] dark:focus-visible:ring-[#58C4DC]/40"
-          >
-            {sending ? "Enviando…" : "Enviar mensaje"}
-          </button>
-        </div>
+                {/* ── Columna derecha: tarjeta del formulario ── */}
+                <div className="w-full rounded-3xl bg-white p-5 shadow-xl shadow-slate-900/10 sm:p-7 lg:max-w-md lg:justify-self-end">
+                    {status === "success" ? (
+                        <div role="status" className="py-10 text-center">
+                            <p className="text-lg font-semibold text-slate-900">¡Gracias por escribirme!</p>
+                            <p className="mt-1 text-sm text-slate-600">Recibí tu mensaje y te voy a responder pronto.</p>
+                            <button type="button" onClick={() => setStatus("idle")} className={`${linkClass} mt-5 text-sm`}>
+                                Enviar otro mensaje
+                            </button>
+                        </div>
+                    ) : (
+                        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+                            <Field id="nombre" label="Nombre" error={errors.nombre}>
+                                <input 
+                                    id="nombre" 
+                                    name="nombre" 
+                                    type="text" 
+                                    autoComplete="name"
+                                    placeholder="Tu nombre" 
+                                    value={values.nombre}
+                                    onChange={handleChange} 
+                                    className={inputClass} {...a11y("nombre")} />
+                            </Field>
 
-        {sent && (
-          <p role="status" className="mt-5 rounded-xl border border-[#087EA4] bg-[#087EA4]/10 px-3.5 py-3 text-[#054b63] dark:border-[#58C4DC] dark:text-[#D1F7F3]">
-            Mensaje enviado. Me pondré en contacto con vos pronto.
-          </p>
-        )}
-      </form>
-      </div>
-    </section>
-  );
+                            <Field id="correo" label="Correo electrónico" error={errors.correo}>
+                                <input 
+                                    id="correo" 
+                                    name="correo" 
+                                    type="email" 
+                                    autoComplete="email"
+                                    placeholder="vos@correo.com" 
+                                    value={values.correo}
+                                    onChange={handleChange}
+                                    className={inputClass} {...a11y("correo")} />
+                            </Field>
+
+                            <Field id="motivo" label="Motivo" error={errors.motivo}>
+                                <div className="relative">
+                                    <select 
+                                        id="motivo" 
+                                        name="motivo" 
+                                        value={values.motivo} 
+                                        onChange={handleChange}
+                                        className={`${inputClass} appearance-none pr-9 ${values.motivo ? "" : "text-slate-400"}`}
+                                        {...a11y("motivo")}>
+                                        <option value="">Seleccionar…</option>
+                                        <option value="laboral">Propuesta laboral</option>
+                                        <option value="freelance">Proyecto freelance</option>
+                                        <option value="colaboracion">Colaboración</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
+                                        strokeLinecap="round" strokeLinejoin="round"
+                                        className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-slate-500">
+                                        <path d="m5 8 5 5 5-5" />
+                                    </svg>
+                                </div>
+                            </Field>
+
+                            <Field id="mensaje" label="Mensaje" error={errors.mensaje}>
+                                <textarea 
+                                    id="mensaje" 
+                                    name="mensaje" 
+                                    maxLength={MAX_MENSAJE}
+                                    placeholder="Escribí tu mensaje…" 
+                                    value={values.mensaje}
+                                    onChange={handleChange} 
+                                    className={`${inputClass} min-h-28 resize-y`}
+                                    {...a11y("mensaje")} 
+                                />
+                                <p className="text-right text-xs text-slate-400">{values.mensaje.length}/{MAX_MENSAJE}</p>
+                            </Field>
+
+                            {/* Honeypot: oculto para personas y lectores de pantalla */}
+                            <div className="hidden" aria-hidden="true">
+                                <label htmlFor="empresa">No completar</label>
+                                <input 
+                                    id="empresa" 
+                                    name="empresa" 
+                                    type="text" 
+                                    tabIndex={-1}
+                                    autoComplete="off" 
+                                    value={values.empresa} 
+                                    onChange={handleChange} 
+                                />
+                            </div>
+
+                            {status === "error" && (
+                                <p role="alert" className="rounded-lg border border-red-700/30 bg-red-50 px-3 py-2.5 text-sm text-red-700">
+                                    No pude enviar el mensaje. Probá de nuevo o escribime a{" "}
+                                    <a href={`mailto:${CONFIG.email}`} className="font-semibold underline">{CONFIG.email}</a>.
+                                </p>
+                            )}
+
+                            {/* Botón píldora con círculo e ícono de flecha */}
+                            <button
+                                type="submit"
+                                disabled={status === "sending"}
+                                className="group mt-1 inline-flex w-full items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
+                            >
+                                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-[#087EA4]">
+                                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
+                                        strokeLinecap="round" strokeLinejoin="round"
+                                        className="size-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none">
+                                        <path d="M4 10h12m-5-5 5 5-5 5" />
+                                    </svg>
+                                </span>
+                                {status === "sending" ? "Enviando…" : "Enviar mensaje"}
+                            </button>
+                        </form>
+                    )}
+                </div>
+            </div>
+        </section>
+    );
 }
