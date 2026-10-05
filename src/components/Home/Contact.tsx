@@ -3,10 +3,9 @@ import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "reac
 /* ───────── Configuración: editá esto con tus datos ───────── */
 const CONFIG = {
     endpoint: "https://formspree.io/f/xvkzgpwj",
-    email: "tu@correo.com",
-    telefono: "+54 351 000 0000", // dejalo vacío ("") para ocultarlo
-    linkedin: "https://www.linkedin.com/in/tu-usuario",
-    github: "https://github.com/tu-usuario",
+    email: "matbuffa05@email.com",
+    linkedin: "https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/",
+    github: "https://github.com/matiibuffaRC",
 };
 
 interface FormValues {
@@ -67,12 +66,16 @@ const iconProps = {
 const MailIcon = () => (
     <svg {...iconProps}><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m4 7 8 6 8-6" /></svg>
 );
-const PhoneIcon = () => (
-    <svg {...iconProps}>
-        <path d="M5 4h3.5l1.8 4.5-2.2 1.4a11 11 0 0 0 5 5l1.4-2.2L19 14.5V18a2 2 0 0 1-2 2A13 13 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+const LinkedinIcon = () => (
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67v-8.6h2.67V18ZM7 8.23a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1ZM18.34 18h-2.67v-4.18c0-1-.02-2.28-1.39-2.28-1.39 0-1.6 1.08-1.6 2.2V18h-2.67v-8.6h2.56v1.18h.04a2.8 2.8 0 0 1 2.52-1.39c2.7 0 3.2 1.78 3.2 4.1V18Z" />
     </svg>
 );
-
+const GithubIcon = () => (
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.7 2.1 3.8 1.5.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+    </svg>
+);
 export default function Contacto() {
     const [values, setValues] = useState<FormValues>(INITIAL);
     const [errors, setErrors] = useState<FormErrors>({});
@@ -118,7 +121,7 @@ export default function Contacto() {
         errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
     return (
-        <section id="contacto" className="bg-[#F9FAFC] px-4 py-12 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
+        <section className="bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
             <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm transition-colors dark:border-gray-800 dark:bg-[#151B23] sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
                 {/* ── Columna izquierda: texto y datos de contacto ── */}
                 <div>
@@ -142,28 +145,35 @@ export default function Contacto() {
                                 </a>
                             </div>
                         </li>
-                        {CONFIG.telefono && (
                         <li className="flex items-center gap-4">
-                            <span className="text-[#087EA4]"><PhoneIcon /></span>
+                            <span className="text-[#087EA4] dark:text-[#58C4DC]"><LinkedinIcon /></span>
                             <div>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">Teléfono</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">LinkedIn</p>
                                 <a
-                                    href={`tel:${CONFIG.telefono.replace(/[^\d+]/g, "")}`}
+                                    href={CONFIG.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}
                                 >
-                                    {CONFIG.telefono}
+                                    Mi perfil
                                 </a>
                             </div>
                         </li>
-                        )}
+                        <li className="flex items-center gap-4">
+                            <span className="text-[#087EA4] dark:text-[#58C4DC]"><GithubIcon /></span>
+                            <div>
+                                <p className="text-xs text-slate-500 dark:text-slate-400">GitHub</p>
+                                <a
+                                    href={CONFIG.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}
+                                >
+                                    Mi perfil
+                                </a>
+                            </div>
+                        </li>
                     </ul>
-
-                    <p className="mt-8 text-sm text-slate-600 dark:text-[#D1D7E0]">
-                        También en{" "}
-                        <a href={CONFIG.linkedin} target="_blank" rel="noopener noreferrer" className={linkClass}>LinkedIn</a>
-                        {" y "}
-                        <a href={CONFIG.github} target="_blank" rel="noopener noreferrer" className={linkClass}>GitHub</a>.
-                    </p>
                 </div>
 
                 {/* ── Columna derecha: tarjeta del formulario ── */}
@@ -177,7 +187,7 @@ export default function Contacto() {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+                        <form onSubmit={handleSubmit} id="contacto"  noValidate className="flex flex-col gap-4">
                             <Field id="nombre" label="Nombre" error={errors.nombre}>
                                 <input 
                                     id="nombre" 
