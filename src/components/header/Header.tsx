@@ -10,7 +10,7 @@ type HeaderProps = {
 // Import archivos
 import profileImage from "../../assets/profileImg.jpg";
 
-const SECTIONS = ["inicio", "proyectos", "experiencia", "sobre-mi"];
+const SECTIONS = ["inicio", "proyectos", "experiencia", "sobre-mi", "contacto"];
 
 function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     const [activeSection, setActiveSection] = useState<string>("inicio");
@@ -76,6 +76,9 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
                     </button>
                     <button type="button" onClick={() => scrollToSection("sobre-mi")} className={linkClass("sobre-mi")} >
                         Sobre mí
+                    </button>
+                    <button type="button" onClick={() => scrollToSection("contacto")} className={linkClass("contacto")} >
+                        Contacto
                     </button>
                 </nav>
 

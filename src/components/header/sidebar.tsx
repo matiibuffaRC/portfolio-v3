@@ -31,6 +31,9 @@ function Sidebar({ open, setOpen, onClick }: SidebarProps) {
                     <button type="button" onClick={() => handleNav("sobre-mi")} className="text-left">
                         Sobre mí
                     </button>
+                    <button type="button" onClick={() => handleNav("contacto")} className="text-left">
+                        Contacto
+                    </button>
                 </nav>
             </div>
         </>
