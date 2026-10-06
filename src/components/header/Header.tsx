@@ -44,7 +44,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     return () => observer.disconnect();
     }, []);
 
-    const linkClass = (id: string) => `cursor-pointer hover:bg-gray-200 dark:hover:bg-[#252C34] transition-all duration-700 py-1 px-4 rounded-3xl ${ activeSection === id ? "bg-[#c4e4ee] dark:bg-[#252C34] text-[#176b68] dark:text-[#D1F7F3]" : ""}`;
+    const linkClass = (id: string) => `select-none cursor-pointer hover:bg-gray-200 dark:hover:bg-[#252C34] transition-all duration-700 py-1 px-4 rounded-3xl ${ activeSection === id ? "bg-[#c4e4ee] dark:bg-[#252C34] text-[#176b68] dark:text-[#D1F7F3]" : ""}`;
 
     return (
         <header className="bg-gray-100 dark:bg-[#151B23] h-17.5 flex justify-between items-center py-3 px-4 md:px-6 border-b border-gray-300 dark:border-gray-800 fixed w-full z-100">
@@ -84,8 +84,8 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
                 <div className="flex items-center gap-4">
                 {/* Change theme button */}
-                <button type="button" title="Cambiar tema" aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"} aria-pressed={dark} onClick={() => setDark(!dark)} className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-300 cursor-pointer ${dark ? "bg-gray-800" : "bg-gray-300"}`} >
-                    <div className={`w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${dark ? "translate-x-5" : "translate-x-0"}`} />
+                <button type="button" title="Cambiar tema" aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"} aria-pressed={dark} onClick={() => setDark(!dark)} className={`select-none w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-300 cursor-pointer ${dark ? "bg-gray-800" : "bg-gray-300"}`} >
+                    <div className={`select-none w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${dark ? "translate-x-5" : "translate-x-0"}`} />
                 </button>
 
                 {/* Menú button */}

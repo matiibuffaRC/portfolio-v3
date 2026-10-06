@@ -121,7 +121,7 @@ export default function Contacto() {
         errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
     return (
-        <section className="bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
+        <section id="contacto" className="bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
             <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm transition-colors dark:border-gray-800 dark:bg-[#151B23] sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
                 {/* ── Columna izquierda: texto y datos de contacto ── */}
                 <div>
@@ -187,7 +187,7 @@ export default function Contacto() {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit} id="contacto"  noValidate className="flex flex-col gap-4">
+                        <form onSubmit={handleSubmit}   noValidate className="flex flex-col gap-4">
                             <Field id="nombre" label="Nombre" error={errors.nombre}>
                                 <input 
                                     id="nombre" 
