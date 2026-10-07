@@ -1,6 +1,6 @@
 // Imports Header componentes
-import Header from "./components/header/Header.tsx";
-import Sidebar from "./components/header/sidebar.tsx";
+import Header from "./components/header/HeaderFloating.tsx";
+// import Sidebar from "./components/header/sidebar.tsx";
 //
 
 // Import inicie components
@@ -41,7 +41,7 @@ function App() {
                 Saltar al contenido principal
             </a>
             <Header open={open} setOpen={setOpen} dark={dark} setDark={setDark} />
-            <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} />
+            {/* <Sidebar open={open} setOpen={setOpen} onClick={() => setOpen(false)} /> */}
             <main id="contenido-principal" tabIndex={-1}>
                 <Inicie></Inicie>
                 <Proyects></Proyects>
