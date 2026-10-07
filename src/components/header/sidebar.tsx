@@ -34,7 +34,7 @@ function Sidebar({ open, setOpen, onClick }: SidebarProps) {
                         Matías
                     </h2>
                 </div>
-                <nav aria-label="Menú de navegación móvil" className="flex flex-col gap-4 text-lg font-bold urbanist" >
+                <nav aria-label="Menú de navegación móvil" className="flex flex-col gap-4 text-lg font-semibold urbanist" >
                     {links.map(({ id, label }, index) => (
                         <button
                             key={id}

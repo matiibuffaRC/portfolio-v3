@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
+import CopyButton from './Buttons/copy';
 
 /* ───────── Configuración: editá esto con tus datos ───────── */
 const CONFIG = {
@@ -15,6 +16,7 @@ interface FormValues {
     mensaje: string;
     empresa: string; // honeypot anti-spam
 }
+
 
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 type Status = "idle" | "sending" | "success" | "error";
@@ -43,7 +45,7 @@ const inputClass =
     "dark:aria-invalid:border-red-400 dark:aria-invalid:bg-red-950/40";
 
 const linkClass =
-    "rounded font-semibold text-[#087EA4] dark:text-[#58C4DC] underline-offset-4 hover:underline " +
+    "rounded font-semibold text-[#087EA4] dark:text-[#58C4DC] underline-offset-4 " +
     "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30 dark:focus-visible:ring-[#58C4DC]/30";
 
 function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: ReactNode }) {
@@ -140,8 +142,13 @@ export default function Contacto() {
                             <span className="text-[#087EA4]"><MailIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">Correo</p>
-                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}>
-                                {CONFIG.email}
+                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} flex flex-row gap-1 items-center text-slate-900 dark:text-[#D1D7E0] `}>
+                                    {CONFIG.email}
+                                    <CopyButton
+                                        variant="outline"
+                                        size="sm"
+                                        content={CONFIG.email}
+                                    />
                                 </a>
                             </div>
                         </li>
@@ -149,28 +156,46 @@ export default function Contacto() {
                             <span className="text-[#087EA4] dark:text-[#58C4DC]"><LinkedinIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">LinkedIn</p>
-                                <a
-                                    href={CONFIG.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}
-                                >
-                                    Mi perfil
-                                </a>
+                                <div className="group flex flex-row gap-2 items-center">
+                                    <a
+                                        href={CONFIG.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${linkClass} text-slate-900 dark:text-[#D1D7E0] `}
+                                    >
+                                        Mi perfil
+                                    </a>
+                                    <span className="grid size-4 shrink-0 place-items-center rounded-full bg-transparent text-[#087EA4] dark:text-[#58C4DC]">
+                                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
+                                            strokeLinecap="round" strokeLinejoin="round"
+                                            className="group-hover:-rotate-180 size-4 transition-all duration-300">
+                                            <path d="M4 10h12m-5-5 5 5-5 5" />
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </li>
                         <li className="flex items-center gap-4">
                             <span className="text-[#087EA4] dark:text-[#58C4DC]"><GithubIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">GitHub</p>
-                                <a
-                                    href={CONFIG.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`${linkClass} text-slate-900 hover:text-[#087EA4] dark:text-[#D1D7E0] dark:hover:text-[#58C4DC]`}
-                                >
-                                    Mi perfil
-                                </a>
+                                <div className="group flex flex-row gap-2 items-center">
+                                    <a
+                                        href={CONFIG.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${linkClass} text-slate-900 dark:text-[#D1D7E0]`}
+                                    >
+                                        Mi perfil
+                                    </a>
+                                    <span className="grid size-4 shrink-0 place-items-center rounded-full bg-transparent text-[#087EA4] dark:text-[#58C4DC]">
+                                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
+                                            strokeLinecap="round" strokeLinejoin="round"
+                                            className="group-hover:-rotate-180 size-4 transition-all duration-300">
+                                            <path d="M4 10h12m-5-5 5 5-5 5" />
+                                        </svg>
+                                    </span>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -187,7 +212,7 @@ export default function Contacto() {
                             </button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit}   noValidate className="flex flex-col gap-4">
+                        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
                             <Field id="nombre" label="Nombre" error={errors.nombre}>
                                 <input 
                                     id="nombre" 
@@ -274,7 +299,7 @@ export default function Contacto() {
                             <button
                                 type="submit"
                                 disabled={status === "sending"}
-                                className="group mt-1 inline-flex w-full items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] dark:bg-[#58C4DC] dark:text-[#151B23] dark:hover:bg-[#3998B6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 dark:focus-visible:ring-[#58C4DC]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
+                                className="group mt-1 inline-flex w-full cursor-pointer items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] dark:bg-[#58C4DC] dark:text-[#151B23] dark:hover:bg-[#3998B6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 dark:focus-visible:ring-[#58C4DC]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
                             >
                                 <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-[#087EA4] dark:bg-[#151B23] dark:text-[#58C4DC]">
                                     <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
