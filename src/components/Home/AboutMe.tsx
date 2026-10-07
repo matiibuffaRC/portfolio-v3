@@ -50,7 +50,7 @@ function AboutMe() {
     });
 
     return (
-        <section id="sobre-mi" ref={sectionRef} className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] pt-17.5 pb-10 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center" >
+        <section id="sobre-mi" ref={sectionRef} className="scroll-mt-18 dark:bg-[#121820] bg-[#f9fafc] pt-20 pb-20 px-5 dark:text-[#D1D7E0] text-[#151B23] flex flex-col items-center" >
             <div>
                 <h2 className="urbanist font-bold text-[#087EA4] dark:text-[#58C4DC] text-4xl w-full pb-3">
                     UN POCO SOBRE MÍ
