@@ -1,4 +1,4 @@
-import CodeIcon from "@mui/icons-material/Code";
+
 
 type SidebarProps = {
     open: boolean;
