@@ -1,5 +1,5 @@
 // Imports Header componentes
-import Header from "./components/header/HeaderFloating.tsx";
+import Header from "./components/header/Header.tsx";
 //
 
 // Import inicie components

@@ -5,7 +5,7 @@ import Sidebar from "./sidebar";
 import profileImage from "../../assets/profileImg.jpg";
 
 // Opción 1: isla flotante. El fondo del link activo se desliza entre secciones.
-function HeaderFloating({ open, setOpen, dark, setDark }: HeaderProps) {
+function Header({ open, setOpen, dark, setDark }: HeaderProps) {
     const active = useActiveSection();
     const navRef = useRef<HTMLElement>(null);
     const [pill, setPill] = useState({ left: 0, width: 0 });
@@ -69,4 +69,4 @@ function HeaderFloating({ open, setOpen, dark, setDark }: HeaderProps) {
     );
 }
 
-export default HeaderFloating;
+export default Header;
