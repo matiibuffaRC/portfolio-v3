@@ -165,13 +165,6 @@ export default function Contacto() {
                                     >
                                         Mi perfil
                                     </a>
-                                    <span className="grid size-4 shrink-0 place-items-center rounded-full bg-transparent text-[#087EA4] dark:text-[#58C4DC]">
-                                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
-                                            strokeLinecap="round" strokeLinejoin="round"
-                                            className="group-hover:-rotate-180 size-4 transition-all duration-300">
-                                            <path d="M4 10h12m-5-5 5 5-5 5" />
-                                        </svg>
-                                    </span>
                                 </div>
                             </div>
                         </li>
@@ -188,13 +181,6 @@ export default function Contacto() {
                                     >
                                         Mi perfil
                                     </a>
-                                    <span className="grid size-4 shrink-0 place-items-center rounded-full bg-transparent text-[#087EA4] dark:text-[#58C4DC]">
-                                        <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2"
-                                            strokeLinecap="round" strokeLinejoin="round"
-                                            className="group-hover:-rotate-180 size-4 transition-all duration-300">
-                                            <path d="M4 10h12m-5-5 5 5-5 5" />
-                                        </svg>
-                                    </span>
                                 </div>
                             </div>
                         </li>
