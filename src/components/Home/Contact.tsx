@@ -142,14 +142,14 @@ export default function Contacto() {
                             <span className="text-[#087EA4]"><MailIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">Correo</p>
-                                <a href={`mailto:${CONFIG.email}`} className={`${linkClass} flex flex-row gap-1 items-center text-slate-900 dark:text-[#D1D7E0] `}>
+                                <p  className={`${linkClass} flex flex-row gap-1 items-center text-slate-900 dark:text-[#D1D7E0] `}>
                                     {CONFIG.email}
                                     <CopyButton
                                         variant="outline"
                                         size="sm"
                                         content={CONFIG.email}
                                     />
-                                </a>
+                                </p>
                             </div>
                         </li>
                         <li className="flex items-center gap-4">
