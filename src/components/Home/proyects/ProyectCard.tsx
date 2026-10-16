@@ -25,7 +25,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
     const currentImage = proyect.images[selected];
     const isEducational = proyect.state === "educational";
     const isInDevelopment = proyect.state === "Sin terminar";
-    const hasWebsite = proyect.state !== "Sin terminar" && proyect.url !== "";
+    const hasWebsite = proyect.url !== "";
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -48,9 +48,9 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
     return (
         <div
-        ref={cardRef}
-        className={`proyect-card ${visible ? "show" : ""} flex flex-col md:flex-row gap-10 md:gap-4 py-5 border-b-2 border-gray-300 dark:border-gray-900 ${index % 2 != 1 ? "md:flex-row-reverse" : ""} `}
-        style={{ transitionDelay: `${index * 0.12}s` }}
+            ref={cardRef}
+            className={`proyect-card ${visible ? "show" : ""} flex flex-col md:flex-row gap-10 md:gap-4 py-5 border-b-2 border-gray-300 dark:border-gray-900 ${index % 2 != 1 ? "md:flex-row-reverse" : ""} `}
+            style={{ transitionDelay: `${index * 0.12}s` }}
         >
         <div className="flex-1 flex flex-col justify-between gap-3 md:gap-0 ">
             <div>
