@@ -50,8 +50,8 @@ const linkClass =
 
 function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: ReactNode }) {
     return (
-        <div className="flex min-w-0 flex-col gap-1.5">
-            <label htmlFor={id} className="text-xs font-medium text-slate-600 dark:text-[#D1D7E0]">
+        <div className="flex min-w-0 flex-col gap-0.5">
+            <label htmlFor={id} className="text-sm font-medium text-slate-600 dark:text-[#D1D7E0]">
                 {label}
             </label>
             {children}
@@ -123,14 +123,14 @@ export default function Contacto() {
         errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
     return (
-        <section id="contacto" className="bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
+        <section id="contacto" className="urbanist bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
             <div className="mx-auto grid w-full max-w-5xl items-center gap-10 rounded-3xl border border-slate-200 bg-[#F9FAFC] p-6 shadow-sm transition-colors dark:border-gray-800 dark:bg-[#151B23] sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-16">
                 {/* ── Columna izquierda: texto y datos de contacto ── */}
                 <div>
                     <p className="text-xs font-medium uppercase tracking-widest text-slate-500 dark:text-slate-400">
                         Estoy para ayudarte
                     </p>
-                    <h2 id="contacto-titulo" className="mt-3 text-4xl font-normal leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl" >
+                    <h2 id="contacto-titulo" className="text-4xl font-normal leading-tight tracking-tight text-slate-900 dark:text-white sm:text-5xl" >
                         <strong className="font-bold">Hablemos</strong> de tu próximo proyecto
                     </h2>
                     <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-600 dark:text-[#D1D7E0]">
@@ -138,7 +138,7 @@ export default function Contacto() {
                     </p>
 
                     <ul className="mt-8 space-y-5">
-                        <li className="flex items-center gap-4">
+                        <li className="flex items-center gap-2">
                             <span className="text-[#087EA4]"><MailIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">Correo</p>
@@ -152,7 +152,7 @@ export default function Contacto() {
                                 </p>
                             </div>
                         </li>
-                        <li className="flex items-center gap-4">
+                        <li className="flex items-center gap-2">
                             <span className="text-[#087EA4] dark:text-[#58C4DC]"><LinkedinIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">LinkedIn</p>
@@ -168,7 +168,7 @@ export default function Contacto() {
                                 </div>
                             </div>
                         </li>
-                        <li className="flex items-center gap-4">
+                        <li className="flex items-center gap-2">
                             <span className="text-[#087EA4] dark:text-[#58C4DC]"><GithubIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">GitHub</p>

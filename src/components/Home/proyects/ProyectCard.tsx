@@ -24,6 +24,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
     const currentImage = proyect.images[selected];
     const isEducational = proyect.state === "educational";
+    const isInDevelopment = proyect.state === "Sin terminar";
     const hasWebsite = proyect.state !== "Sin terminar" && proyect.url !== "";
 
     useEffect(() => {
@@ -73,19 +74,21 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 </a>
                 </div>
             )}
-            <a
-                href={proyect.code}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 dark:hover:bg-[#1a2530] hover:bg-gray-400"
-            >
-                <img
-                src={GithubIcon}
-                alt="Github SVG icon"
-                className="h-5 w-5 dark:invert"
-                />
-                <span className="urbanist font-bold">Código</span>
-            </a>
+            {proyect.code !== "" && (
+                <a
+                    href={proyect.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-row items-center gap-1 dark:bg-[#121820] bg-gray-300 px-3 py-1.5 rounded-full cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 dark:hover:bg-[#1a2530] hover:bg-gray-400"
+                >
+                    <img
+                    src={GithubIcon}
+                    alt="Github SVG icon"
+                    className="h-5 w-5 dark:invert"
+                    />
+                    <span className="urbanist font-bold">Código</span>
+                </a>
+            )}
             </div>
         </div>
 
@@ -105,7 +108,11 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                 <span
                 className={`absolute top-3 left-3 rounded-full border px-3 py-1 text-xs open-sans ${isEducational ? "border-[#259E93] bg-[#E3F6F5] text-[#176b68] dark:border-[#62c9c0] dark:bg-[#163c3d] dark:text-[#D1F4F1]" : "border-[#259E93] bg-[#259E93] text-white"}`}
                 >
-                {isEducational ? "Educativo" : "En producción"}
+                {isEducational
+                    ? "Educativo"
+                    : isInDevelopment
+                      ? "En desarrollo"
+                      : "En producción"}
                 </span>
             )}
             </div>
