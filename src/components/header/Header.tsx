@@ -24,7 +24,7 @@ function Header({ open, setOpen, dark, setDark }: HeaderProps) {
 
     return (
         <>
-            <header className="pointer-events-none fixed inset-x-0 top-3 z-100 flex justify-center px-2">
+            <header className="pointer-events-none fixed inset-x-0 top-5 z-100 flex justify-center px-3">
                 <div className="pointer-events-auto flex w-full items-center justify-between gap-3 rounded-full border border-gray-300/70 bg-white/70 p-2 shadow-[0_8px_24px_-8px_rgba(21,27,35,0.2)] backdrop-blur-md dark:border-gray-700/70 dark:bg-[#151B23]/70 dark:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.45)] md:max-w-5xl md:justify-between md:gap-4 md:px-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
                     <button type="button" aria-label="Ir a inicio" onClick={() => scrollToSection("inicio")} className="flex items-center gap-3 rounded-full py-0 pl-0 pr-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#176b68]" >
                         <img src={profileImage} alt="Matías Buffa" className="h-10 w-10 rounded-full shadow-[0_2px_8px_rgba(21,27,35,0.24)]" />
