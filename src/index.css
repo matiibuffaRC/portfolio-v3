@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+::selection {
+  background-color: #087ea4;
+  color: #fff;
+}
+
 html {
   scroll-behavior: smooth;
 }
