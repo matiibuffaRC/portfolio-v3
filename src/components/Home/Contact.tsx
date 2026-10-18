@@ -35,7 +35,7 @@ function validate(v: FormValues): FormErrors {
 
 /* Marca: #087EA4 — fondo: #F9FAFC. Inputs "rellenos" sin borde visible, como en la referencia */
 const inputClass =
-    "w-full rounded-lg border border-transparent bg-slate-100 px-3 py-2.5 text-sm text-slate-800 " +
+    "w-full rounded-lg shadow-lg border border-transparent bg-slate-100 px-3 py-2.5 text-sm text-slate-800 " +
     "dark:border-[#3A4654] dark:bg-[#1e242c] dark:text-[#D1D7E0] dark:placeholder:text-slate-500 " +
     "placeholder:text-slate-400 transition-colors motion-reduce:transition-none " +
     "hover:border-[#087EA4]/50 dark:hover:border-[#58C4DC]/50 " +

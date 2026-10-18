@@ -9,14 +9,14 @@ function AboutMe() {
 
     useEffect(() => {
         const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry.isIntersecting) {
-            setVisible(true);
-            }
-        },
-        {
-            threshold: 0.5,
-        },
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                setVisible(true);
+                }
+            },
+            {
+                threshold: 0.5,
+            },
         );
 
         if (sectionRef.current) {
@@ -64,8 +64,9 @@ function AboutMe() {
 
                         <h3 className="urbanist text-sm md:text-lg">
                             Desarrollador Full Stack especializado en aplicaciones web
-                            modernas utilizando React y Node.js. Actualmente curso Ingeniería
-                            en Sistemas de Información en la Universidad Tecnológica Nacional
+                            modernas utilizando React y Node.js. Actualmente curso 
+                            <span className='text-[#087EA4] font-semibold'> Ingeniería en Sistemas de Información </span>
+                            en la Universidad Tecnológica Nacional
                             (UTN).
                         </h3>
 
