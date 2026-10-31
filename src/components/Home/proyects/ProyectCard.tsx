@@ -88,6 +88,10 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                             <img
                                 src={GithubIcon}
                                 alt="Github SVG icon"
+                                width={20}
+                                height={20}
+                                loading="lazy"
+                                decoding="async"
                                 className="h-5 w-5 dark:invert"
                             />
                             <span className="urbanist font-bold">Código</span>
@@ -102,6 +106,11 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                     <img
                         src={currentImage}
                         title="Proyect image"
+                        alt={proyect.title}
+                        width={1920}
+                        height={1080}
+                        loading="lazy"
+                        decoding="async"
                         className="project-image-enter w-full h-full object-cover rounded-2xl"
                     />
                 </div>
@@ -124,7 +133,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                             type="button"
                             onClick={prev}
                             aria-label="Imagen anterior"
-                            className="absolute left-2 top-1/2 pb-1 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 text-white text-xl leading-none backdrop-blur-sm cursor-pointer transition hover:bg-black/60 active:scale-90"
+                            className="absolute left-2 top-1/2 pb-1 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 text-white text-xl leading-none backdrop-blur-sm cursor-pointer transition-[background-color,scale] hover:bg-black/60 active:scale-90"
                         >
                             ‹
                         </button>
@@ -132,20 +141,29 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                             type="button"
                             onClick={next}
                             aria-label="Imagen siguiente"
-                            className="absolute right-2 top-1/2 pb-1 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 text-white text-xl leading-none backdrop-blur-sm cursor-pointer transition hover:bg-black/60 active:scale-90"
+                            className="absolute right-2 top-1/2 pb-1 -translate-y-1/2 h-8 w-8 rounded-full bg-black/40 text-white text-xl leading-none backdrop-blur-sm cursor-pointer transition-[background-color,scale] hover:bg-black/60 active:scale-90"
                         >
                             ›
                         </button>
-                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        <div className="absolute bottom-3 left-1/2 h-1.5 w-14 -translate-x-1/2">
                             {proyect.images.map((_, i) => (
                                 <button
                                     type="button"
                                     key={i}
                                     onClick={() => setSelected(i)}
                                     aria-label={`Ir a la imagen ${i + 1}`}
-                                    className={`h-1.5 rounded-full cursor-pointer transition-all ${selected === i ? "w-5 bg-white" : "w-1.5 bg-white/60"}`}
+                                    className={`absolute top-0 h-1.5 rounded-full cursor-pointer transition-transform ${selected === i ? "w-5 bg-transparent" : "w-1.5 bg-white/60"}`}
+                                    style={{
+                                        left: `${i * 12}px`,
+                                        transform: `translateX(${selected < i ? 14 : 0}px)`,
+                                    }}
                                 />
                             ))}
+                            <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute left-0 top-0 h-1.5 w-5 rounded-full bg-white transition-transform"
+                                style={{ transform: `translateX(${selected * 12}px)` }}
+                            />
                         </div>
                     </>
                 )}

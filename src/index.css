@@ -94,8 +94,6 @@ html {
     opacity 0.4s ease,
     transform 0.4s ease,
     filter 0.4s ease;
-
-  will-change: opacity, transform, filter;
 }
 
 .proyect-card.show {
@@ -138,8 +136,26 @@ html {
 
 
 .skill-chip {
+  position: relative;
   opacity: 0;
   transform: translateY(8px);
+}
+
+.skill-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.skill-chip:hover::after {
+  opacity: 1;
 }
 
 .skill-chip-show {
@@ -195,15 +211,20 @@ html {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 
+  .timeline-item,
   .proyect-card,
   .skill-chip {
     opacity: 1;
     filter: none;
     transform: none;
+    animation: none !important;
+    transition: none !important;
   }
 }
 

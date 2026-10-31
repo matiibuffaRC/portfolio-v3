@@ -103,15 +103,15 @@ export function MenuButton({
       className="relative z-50 h-9 w-9 lg:hidden"
     >
       <span className="absolute left-1/2 top-1/2 block h-5 w-5 -translate-x-1/2 -translate-y-1/2">
-        <span
-          className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1"}`}
-        />
-        <span
-          className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 opacity-0" : "top-1/2 -translate-y-1/2"}`}
-        />
-        <span
-          className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1"}`}
-        />
+      <span
+        className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-1"}`}
+      />
+      <span
+        className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 opacity-0" : "top-1/2 -translate-y-1/2"}`}
+      />
+      <span
+        className={`absolute left-0 h-0.5 w-full bg-black transition-all duration-300 dark:bg-[#D1D7E0] ${open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-1"}`}
+      />
       </span>
     </button>
   );

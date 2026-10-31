@@ -74,7 +74,7 @@ function TechCarousel({
                 {[0, 1, 2, 3, 4, 5, 6].map((groupIndex) => (
                     <div key={groupIndex} className="flex gap-6 md:gap-16 justify-center items-center" aria-hidden={groupIndex !== 0} >
                         {technologies.map((tech) => (
-                            <img key={`${groupIndex}-${tech.name}`} title={tech.name} alt={tech.name} src={getIconSrc(tech, dark)} className="h-10 w-10 md:h-14 md:w-14 shrink-0 transition-transform duration-300 hover:scale-110" />
+                            <img key={`${groupIndex}-${tech.name}`} title={tech.name} alt={tech.name} src={getIconSrc(tech, dark)} width={56} height={56} loading="lazy" decoding="async" className="h-10 w-10 md:h-14 md:w-14 shrink-0 transition-transform duration-300 hover:scale-110" />
                         ))}
                     </div>
                 ))}

@@ -20,7 +20,9 @@ function HeaderAutoHide({ open, setOpen, dark, setDark }: HeaderProps) {
     const lastY = useRef(0);
 
     useEffect(() => {
-        const onScroll = () => {
+        let frame: number | null = null;
+        const update = () => {
+            frame = null;
             const y = window.scrollY;
             const max = document.documentElement.scrollHeight - window.innerHeight;
             setProgress(max > 0 ? (y / max) * 100 : 0);
@@ -31,9 +33,15 @@ function HeaderAutoHide({ open, setOpen, dark, setDark }: HeaderProps) {
                 lastY.current = y;
             }
         };
+        const onScroll = () => {
+            if (frame === null) frame = window.requestAnimationFrame(update);
+        };
         window.addEventListener("scroll", onScroll, { passive: true });
-        onScroll();
-        return () => window.removeEventListener("scroll", onScroll);
+        update();
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            if (frame !== null) window.cancelAnimationFrame(frame);
+        };
     }, []);
 
     // Con el menú móvil abierto el header nunca se esconde
@@ -55,6 +63,9 @@ function HeaderAutoHide({ open, setOpen, dark, setDark }: HeaderProps) {
                     <img
                         src={profileImage}
                         alt="Matías Buffa"
+                        width={40}
+                        height={40}
+                        decoding="async"
                         className={`rounded-full transition-all duration-300 ${compact ? "h-8 w-8" : "h-10 w-10"}`}
                     />
                     <span className="urbanist text-left text-[#151B23] dark:text-[#D1D7E0]">

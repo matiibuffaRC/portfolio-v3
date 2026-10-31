@@ -28,7 +28,7 @@ function HeaderRail({ open, setOpen, dark, setDark }: HeaderProps) {
                     onClick={() => scrollToSection("inicio")}
                     className="flex items-center gap-3 px-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#176b68]"
                 >
-                    <img src={profileImage} alt="Matías Buffa" className="h-10 w-10 shrink-0 rounded-full" />
+                    <img src={profileImage} alt="Matías Buffa" width={40} height={40} decoding="async" className="h-10 w-10 shrink-0 rounded-full" />
                     <span className="urbanist whitespace-nowrap text-left text-[#151B23] opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 dark:text-[#D1D7E0]">
                         <span className="block text-base font-bold leading-tight">Matías Buffa</span>
                         <span className="block text-xs font-bold">Software Developer</span>
@@ -78,7 +78,7 @@ function HeaderRail({ open, setOpen, dark, setDark }: HeaderProps) {
                     onClick={() => scrollToSection("inicio")}
                     className="flex items-center gap-2"
                 >
-                    <img src={profileImage} alt="Matías Buffa" className="h-9 w-9 rounded-full" />
+                    <img src={profileImage} alt="Matías Buffa" width={36} height={36} decoding="async" className="h-9 w-9 rounded-full" />
                     <span className="urbanist text-sm font-bold text-[#151B23] dark:text-[#D1D7E0]">
                         Matías Buffa
                     </span>

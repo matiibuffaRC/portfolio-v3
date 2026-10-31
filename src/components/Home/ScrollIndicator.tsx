@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function ScrollIndicator() {
   const [visible, setVisible] = useState(true);
+  const frame = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      // si estás arriba del todo → visible
-      if (window.scrollY < 50) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
+      if (frame.current !== null) return;
+      frame.current = window.requestAnimationFrame(() => {
+        setVisible(window.scrollY < 50);
+        frame.current = null;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame.current !== null) window.cancelAnimationFrame(frame.current);
+    };
   }, []);
 
   const handleClick = () => {
