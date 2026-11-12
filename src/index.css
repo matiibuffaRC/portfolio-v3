@@ -64,55 +64,72 @@ html {
 
 .timeline-item {
   opacity: 0;
-  transform: translateY(-40px) scale(0.98);
-  filter: blur(4px);
+  transform: translate3d(0, -24px, 0);
 
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    filter 0.8s ease;
+    opacity 0.6s ease-out,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .timeline-item.show {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* --- */
 
 /* Animaciones de los proyectos */
 
+/*
+  - La entrada usa una animación (keyframes) sobre `opacity` + `translate`,
+    con el retraso en cascada que calcula PrintProyects (--reveal-delay).
+  - El hover usa `transform`, que es una propiedad independiente de `translate`:
+    así el hover responde al instante y nunca hereda el retraso de entrada
+    (antes el transitionDelay inline también demoraba el hover).
+  - Sin filter: blur() ni scale(): ambos obligan a re-rasterizar toda la tarjeta.
+*/
 .proyect-card {
   opacity: 0;
+  translate: 0 24px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  transform: translateY(50px) scale(0.98);
+.proyect-card[data-visible] {
+  animation: proyect-card-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms) both;
+}
 
-  filter: blur(6px);
+@media (hover: hover) {
+  .proyect-card[data-visible]:hover {
+    transform: translateY(-4px);
+  }
+}
 
+@keyframes proyect-card-in {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Fundido corto de la lista al cambiar de filtro */
+.proyect-list {
+  animation: fade-in 0.2s ease-out both;
+}
+
+/* Carrusel de imágenes */
+.project-track {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.project-dot {
   transition:
-    opacity 0.4s ease,
-    transform 0.4s ease,
-    filter 0.4s ease;
-}
-
-.proyect-card.show {
-  opacity: 1;
-
-  transform: translateY(0) scale(1);
-
-  filter: blur(0);
-}
-
-.proyect-card.show {
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease,
-    filter 0.5s ease;
-}
-
-.proyect-card.show:hover {
-  transform: translateY(-4px) scale(1.005);
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease-out;
 }
 
 .animate-fade-in {
@@ -180,17 +197,6 @@ html {
   opacity: 0;
 }
 
-@keyframes project-image-enter {
-  from {
-    opacity: 0.4;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @keyframes skill-chip-enter {
   from {
     opacity: 0;
@@ -223,6 +229,7 @@ html {
     opacity: 1;
     filter: none;
     transform: none;
+    translate: none;
     animation: none !important;
     transition: none !important;
   }

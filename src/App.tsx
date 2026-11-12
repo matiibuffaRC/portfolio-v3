@@ -17,21 +17,24 @@ import { useState, useEffect } from "react";
 
 function App() {
     const [open, setOpen] = useState<boolean>(false);
-    const [dark, setDark] = useState<boolean>(false);
-
-    // cargar preferencia
-    useEffect(() => {
-        const saved = localStorage.getItem("theme");
-        if (saved === "dark") {
-            setDark(true);
-            document.documentElement.classList.add("dark");
+    // La preferencia se lee al crear el estado (y el script de index.html ya aplicó
+    // la clase antes del primer pintado), así no hay parpadeo claro/oscuro al cargar.
+    const [dark, setDark] = useState<boolean>(() => {
+        try {
+            return localStorage.getItem("theme") === "dark";
+        } catch {
+            return false;
         }
-    }, []);
+    });
 
     // aplicar cambios
     useEffect(() => {
         document.documentElement.classList.toggle("dark", dark);
-        localStorage.setItem("theme", dark ? "dark" : "light");
+        try {
+            localStorage.setItem("theme", dark ? "dark" : "light");
+        } catch {
+            // almacenamiento no disponible (modo privado, etc.)
+        }
     }, [dark]);
 
     return (

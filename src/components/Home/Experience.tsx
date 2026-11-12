@@ -56,7 +56,7 @@ function Experience() {
 
                 <Timeline className="w-full md:max-w-200" position="right" sx={{ [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0, }, [`& .MuiTimelineConnector-root`]: { backgroundColor: "#087EA4", width: "2px", minHeight: "80px", }, [`& .MuiTimelineDot-root`]: { backgroundColor: "#087EA4", boxShadow: "none", },}}>
                     {experiences.map((exp, index) => (
-                        <TimelineItem key={index} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.3}s` }} >
+                        <TimelineItem key={index} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.15}s` }} >
                             <TimelineSeparator>
                                 <TimelineDot />
                                 <TimelineConnector />
