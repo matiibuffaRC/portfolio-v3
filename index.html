@@ -25,7 +25,7 @@
         <meta property="og:url" content="https://matiibuffa.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Matías Buffa Portfolio" />
-        <meta property="og:locale" content="es_ES" />
+        <meta property="og:locale" content="es_AR" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Matías Buffa | Desarrollador Full Stack" />
@@ -35,7 +35,9 @@
         <script>
             // Aplica el tema guardado antes del primer pintado (evita el parpadeo)
             try {
-                if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
+                var saved = localStorage.getItem("theme");
+                var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (dark) document.documentElement.classList.add("dark");
             } catch (e) {}
         </script>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;family=Urbanist:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet" />
@@ -58,8 +60,8 @@
                 "url": "https://matiibuffa.vercel.app/",
                 "jobTitle": "Full Stack Developer",
                 "sameAs": [
-                    "https://github.com/tuusuario",
-                    "https://linkedin.com/in/tuusuario"
+                    "https://github.com/matiibuffaRC",
+                    "https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/"
                 ]
             }
         </script>

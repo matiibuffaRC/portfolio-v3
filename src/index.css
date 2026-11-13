@@ -8,6 +8,25 @@
 
 html {
   scroll-behavior: smooth;
+  /* Que las anclas y el foco no queden tapados por el header fijo */
+  scroll-padding-top: 6rem;
+}
+
+/* Foco visible y consistente para cualquier elemento interactivo
+   (solo con teclado: no aparece al hacer click con el mouse). */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #087ea4;
+  outline-offset: 2px;
+}
+
+.dark :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline-color: #58c4dc;
+}
+
+/* Las secciones reciben foco al navegar desde el menú: sin contorno sobre la sección entera */
+main:focus,
+section[tabindex="-1"]:focus {
+  outline: none;
 }
 
 /* Fonts */

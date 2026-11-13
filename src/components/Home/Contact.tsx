@@ -4,7 +4,7 @@ import CopyButton from './Buttons/copy';
 /* ───────── Configuración: editá esto con tus datos ───────── */
 const CONFIG = {
     endpoint: "https://formspree.io/f/xvkzgpwj",
-    email: "matbuffa05@email.com",
+    email: "matbuffautn05@gmail.com",
     linkedin: "https://www.linkedin.com/in/mat%C3%ADas-buffa-b4b901358/",
     github: "https://github.com/matiibuffaRC",
 };
@@ -55,7 +55,7 @@ function Field({ id, label, error, children }: { id: string; label: string; erro
                 {label}
             </label>
             {children}
-            {error && <p id={`${id}-error`} role="alert" className="text-xs text-red-700">{error}</p>}
+            {error && <p id={`${id}-error`} className="text-xs text-red-700 dark:text-red-400">{error}</p>}
         </div>
     );
 }
@@ -102,7 +102,8 @@ export default function Contacto() {
 
         setStatus("sending");
         try {
-            const { empresa, ...data } = values;
+            // Se envía todo menos el honeypot
+            const data = { nombre: values.nombre, correo: values.correo, motivo: values.motivo, mensaje: values.mensaje };
             const res = await fetch(CONFIG.endpoint, {
                 method: "POST",
                 headers: {
@@ -119,8 +120,16 @@ export default function Contacto() {
         }
     };
 
-    const a11y = (name: keyof FormValues) =>
-        errors[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
+    // Todos los campos son obligatorios; el error (si hay) se vincula con aria-describedby
+    // y se anuncia cuando el foco llega al campo inválido.
+    const a11y = (name: keyof FormValues, extraDescribedBy?: string) => {
+        const describedBy = [errors[name] && `${name}-error`, extraDescribedBy].filter(Boolean).join(" ");
+        return {
+            "aria-required": true as const,
+            ...(errors[name] ? { "aria-invalid": true as const } : {}),
+            ...(describedBy ? { "aria-describedby": describedBy } : {}),
+        };
+    };
 
     return (
         <section id="contacto" className="urbanist bg-[#F9FAFC] px-4 py-45 text-slate-900 transition-colors dark:bg-[#121820] dark:text-[#D1D7E0] sm:py-20" aria-labelledby="contacto-titulo">
@@ -139,15 +148,18 @@ export default function Contacto() {
 
                     <ul className="mt-8 space-y-5">
                         <li className="flex items-center gap-2">
-                            <span className="text-[#087EA4]"><MailIcon /></span>
+                            <span className="text-[#087EA4] dark:text-[#58C4DC]"><MailIcon /></span>
                             <div>
                                 <p className="text-xs text-slate-500 dark:text-slate-400">Correo</p>
-                                <div className={`${linkClass} flex flex-row gap-1 items-center text-slate-900 dark:text-[#D1D7E0] `}>
-                                    {CONFIG.email}
+                                <div className="flex flex-row gap-1 items-center">
+                                    <a href={`mailto:${CONFIG.email}`} className={`${linkClass} text-slate-900 dark:text-[#D1D7E0] break-all`}>
+                                        {CONFIG.email}
+                                    </a>
                                     <CopyButton
                                         variant="outline"
                                         size="sm"
                                         content={CONFIG.email}
+                                        ariaLabel="Copiar correo"
                                     />
                                 </div>
                             </div>
@@ -163,7 +175,7 @@ export default function Contacto() {
                                         rel="noopener noreferrer"
                                         className={`${linkClass} text-slate-900 dark:text-[#D1D7E0] `}
                                     >
-                                        Mi perfil
+                                        Mi perfil<span className="sr-only"> de LinkedIn (se abre en una pestaña nueva)</span>
                                     </a>
                                 </div>
                             </div>
@@ -179,7 +191,7 @@ export default function Contacto() {
                                         rel="noopener noreferrer"
                                         className={`${linkClass} text-slate-900 dark:text-[#D1D7E0]`}
                                     >
-                                        Mi perfil
+                                        Mi perfil<span className="sr-only"> de GitHub (se abre en una pestaña nueva)</span>
                                     </a>
                                 </div>
                             </div>
@@ -190,7 +202,7 @@ export default function Contacto() {
                 {/* ── Columna derecha: tarjeta del formulario ── */}
                 <div className="w-full rounded-3xl bg-white p-5 shadow-xl shadow-slate-900/10 transition-colors dark:bg-[#1e242c] dark:shadow-black/20 sm:p-7 lg:max-w-md lg:justify-self-end">
                     {status === "success" ? (
-                        <div role="status" className="py-10 text-center">
+                        <div role="status" tabIndex={-1} ref={(el) => el?.focus()} className="py-10 text-center focus:outline-none">
                             <p className="text-lg font-semibold text-slate-900 dark:text-white">¡Gracias por escribirme!</p>
                             <p className="mt-1 text-sm text-slate-600 dark:text-[#D1D7E0]">Recibí tu mensaje y te voy a responder pronto.</p>
                             <button type="button" onClick={() => setStatus("idle")} className={`${linkClass} mt-5 text-sm`}>
@@ -255,9 +267,11 @@ export default function Contacto() {
                                     value={values.mensaje}
                                     onChange={handleChange} 
                                     className={`${inputClass} min-h-28 resize-y`}
-                                    {...a11y("mensaje")} 
+                                    {...a11y("mensaje", "mensaje-contador")} 
                                 />
-                                <p className="text-right text-xs text-slate-400 dark:text-slate-500">{values.mensaje.length}/{MAX_MENSAJE}</p>
+                                <p id="mensaje-contador" className="text-right text-xs text-slate-500 dark:text-slate-400">
+                                    {values.mensaje.length}/{MAX_MENSAJE}<span className="sr-only"> caracteres</span>
+                                </p>
                             </Field>
 
                             {/* Honeypot: oculto para personas y lectores de pantalla */}
@@ -285,6 +299,7 @@ export default function Contacto() {
                             <button
                                 type="submit"
                                 disabled={status === "sending"}
+                                aria-busy={status === "sending"}
                                 className="group mt-1 inline-flex w-full cursor-pointer items-center gap-3 self-start rounded-full bg-[#087EA4] p-1.5 pr-6 text-sm font-semibold text-white transition-colors hover:bg-[#066686] dark:bg-[#58C4DC] dark:text-[#151B23] dark:hover:bg-[#3998B6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/40 dark:focus-visible:ring-[#58C4DC]/40 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none sm:w-auto"
                             >
                                 <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white text-[#087EA4] dark:bg-[#151B23] dark:text-[#58C4DC]">
