@@ -56,7 +56,7 @@ function Experience() {
 
                 <Timeline className="w-full md:max-w-200" position="right" sx={{ [`& .MuiTimelineItem-root:before`]: { flex: 0, padding: 0, }, [`& .MuiTimelineConnector-root`]: { backgroundColor: "#087EA4", width: "2px", minHeight: "80px", }, [`& .MuiTimelineDot-root`]: { backgroundColor: "#087EA4", boxShadow: "none", },}}>
                     {experiences.map((exp, index) => (
-                        <TimelineItem key={index} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.15}s` }} >
+                        <TimelineItem key={exp.title} className={`timeline-item ${visible ? "show" : ""}`} style={{ transitionDelay: `${index * 0.15}s` }} >
                             <TimelineSeparator>
                                 <TimelineDot />
                                 <TimelineConnector />
@@ -64,24 +64,24 @@ function Experience() {
 
                             <TimelineContent>
                                 {/* Título */}
-                                <h2 className="urbanist font-bold text-xl md:text-2xl text-[#243054] dark:text-white">
+                                <h3 className="urbanist font-bold text-xl md:text-2xl text-[#243054] dark:text-white">
                                     {exp.title}
-                                </h2>
+                                </h3>
 
                                 {/* Empresa */}
-                                <h2 className="urbanist font-bold text-md md:text-lg text-[#087EA4] dark:text-[#58C4DC]">
+                                <p className="urbanist font-bold text-md md:text-lg text-[#087EA4] dark:text-[#58C4DC]">
                                     {exp.company}
-                                </h2>
+                                </p>
 
                                 {/* Fecha */}
-                                <h3 className="urbanist font-semibold text-md md:text-lg text-gray-500 dark:text-gray-400">
+                                <p className="urbanist font-semibold text-md md:text-lg text-gray-600 dark:text-gray-400">
                                     {exp.date}
-                                </h3>
+                                </p>
 
                                 {/* Descripción */}
-                                <h3 className="urbanist text-sm md:text-md font-semibold leading-relaxed text-gray-600 dark:text-gray-300">
+                                <p className="urbanist text-sm md:text-md font-semibold leading-relaxed text-gray-600 dark:text-gray-300">
                                     {exp.desc}
-                                </h3>
+                                </p>
                             </TimelineContent>
                         </TimelineItem>
                     ))}

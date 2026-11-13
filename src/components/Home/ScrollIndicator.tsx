@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { scrollToSection } from "../header/headerShared";
 
 function ScrollIndicator() {
   const [visible, setVisible] = useState(true);
@@ -21,24 +22,22 @@ function ScrollIndicator() {
     };
   }, []);
 
-  const handleClick = () => {
-    window.scrollBy({
-      top: window.innerHeight * 0.6,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div
-      onClick={handleClick}
-      className={`fixed bottom-5 lg:bottom-15 left-1/2 -translate-x-1/2 cursor-pointer transition-opacity duration-500 ${
+    // Un <button> real: se puede usar con teclado y tiene nombre accesible.
+    // Cuando se oculta, `inert` lo saca del orden de tabulación.
+    <button
+      type="button"
+      aria-label="Ir a la sección de proyectos"
+      onClick={() => scrollToSection("proyectos")}
+      inert={!visible}
+      className={`fixed bottom-5 lg:bottom-15 left-1/2 -translate-x-1/2 grid h-11 w-11 place-items-center rounded-full cursor-pointer transition-opacity duration-500 ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="animate-bounce text-3xl text-[#087EA4] dark:text-[#58C4DC]">
+      <span aria-hidden="true" className="animate-bounce text-3xl text-[#087EA4] dark:text-[#58C4DC]">
         ↓
-      </div>
-    </div>
+      </span>
+    </button>
   );
 }
 

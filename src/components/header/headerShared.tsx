@@ -17,8 +17,17 @@ export const LINKS = [
 
 const IDS = LINKS.map((l) => l.id);
 
+const prefersReducedMotion = () =>
+  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+
+// Desplaza hasta la sección y le pasa el foco, así quien navega con teclado
+// o lector de pantalla continúa desde ahí (y no vuelve al header al tabular).
 export const scrollToSection = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" });
+  if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+  el.focus({ preventScroll: true });
 };
 
 // Scroll spy: devuelve el id de la sección que cruza el centro de la pantalla
@@ -75,8 +84,9 @@ export function ThemeButton({
   return (
     <button
       type="button"
-      title="Cambiar tema"
-      aria-label={dark ? "Activar modo claro" : "Activar modo oscuro"}
+      title={dark ? "Activar modo claro" : "Activar modo oscuro"}
+      // Con aria-pressed la etiqueta debe ser fija: el estado lo anuncia "presionado / no presionado"
+      aria-label="Modo oscuro"
       aria-pressed={dark}
       onClick={() => setDark(!dark)}
       className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-[#151B23] transition-colors duration-300 hover:bg-gray-200 dark:text-[#D1D7E0] dark:hover:bg-[#252C34]"
@@ -93,14 +103,14 @@ export function MenuButton({
   return (
     <button
       type="button"
-      title="Abrir o cerrar menú"
+      id="boton-menu"
       aria-label={
         open ? "Cerrar menú de navegación" : "Abrir menú de navegación"
       }
       aria-expanded={open}
       aria-controls="menu-navegacion"
       onClick={() => setOpen(!open)}
-      className="relative z-50 h-9 w-9 lg:hidden"
+      className="relative z-50 h-9 w-9 cursor-pointer rounded-full lg:hidden"
     >
       <span className="absolute left-1/2 top-1/2 block h-5 w-5 -translate-x-1/2 -translate-y-1/2">
       <span

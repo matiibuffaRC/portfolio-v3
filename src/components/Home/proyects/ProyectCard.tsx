@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import type { TouchEvent } from "react";
+import type { KeyboardEvent, TouchEvent } from "react";
 
 import GithubIcon from "../../../assets/icons/github-svgrepo-com.svg";
 
@@ -33,6 +33,17 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
     const prev = () => setSelected((s) => (s - 1 + total) % total);
     const next = () => setSelected((s) => (s + 1) % total);
 
+    // Flechas del teclado cuando el foco está dentro del carrusel
+    const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            prev();
+        } else if (e.key === "ArrowRight") {
+            e.preventDefault();
+            next();
+        }
+    };
+
     const onTouchStart = (e: TouchEvent) => {
         touchStartX.current = e.touches[0].clientX;
     };
@@ -53,12 +64,12 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
         >
             <div className="flex-1 flex flex-col justify-between gap-3 md:gap-0 ">
                 <div>
-                    <h2 className="urbanist font-bold text-2xl dark:text-white">
+                    <h3 className="urbanist font-bold text-2xl dark:text-white">
                         {proyect.title}
-                    </h2>
-                    <h3 className="open-sans text-sm md:text-xs lg:text-sm">
-                        {proyect.description}
                     </h3>
+                    <p className="open-sans text-sm md:text-xs lg:text-sm">
+                        {proyect.description}
+                    </p>
                 </div>
                 <div className="flex flex-row items-center gap-2">
                     {hasWebsite && (
@@ -67,9 +78,10 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                                 href={proyect.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-[scale,background-color] duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state == "finished" ? "bg-[#087EA4] hover:bg-[#1d9caf] dark:bg-[#58C4DC]" : "bg-gray-400 hover:bg-gray-500"}`}
+                                className={`urbanist font-bold px-3 py-1.5 rounded-full text-white dark:text-[#121820] transition-[scale,background-color] duration-200 ease-out hover:scale-105 active:scale-95 inline-block ${proyect.state === "finished" ? "bg-[#087EA4] hover:bg-[#066686] dark:bg-[#58C4DC] dark:hover:bg-[#3998B6]" : "bg-gray-600 hover:bg-gray-700 dark:bg-gray-400 dark:hover:bg-gray-300"}`}
                             >
-                                {proyect.state == "finished" ? "Visitar sitio" : "Visitar demo"}
+                                {proyect.state === "finished" ? "Visitar sitio" : "Visitar demo"}
+                                <span className="sr-only"> de {proyect.title} (se abre en una pestaña nueva)</span>
                             </a>
                         </div>
                     )}
@@ -90,6 +102,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                                 className="h-5 w-5 dark:invert"
                             />
                             <span className="urbanist font-bold">Código</span>
+                            <span className="sr-only"> de {proyect.title} en GitHub (se abre en una pestaña nueva)</span>
                         </a>
                     )}
                 </div>
@@ -97,7 +110,19 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
             {/* Carrusel: todas las imágenes en una pista que se desplaza con transform
                 (animación en GPU, sin cambiar el src ni esperar a que cargue la imagen) */}
-            <div className="relative w-full md:max-w-90 lg:max-w-110">
+            <div
+                className="relative w-full md:max-w-90 lg:max-w-110"
+                role="group"
+                aria-roledescription="carrusel"
+                aria-label={`Capturas de ${proyect.title}`}
+                onKeyDown={total > 1 ? onKeyDown : undefined}
+            >
+                {/* Anuncia el cambio de imagen a lectores de pantalla */}
+                {total > 1 && (
+                    <p className="sr-only" aria-live="polite">
+                        Imagen {selected + 1} de {total}
+                    </p>
+                )}
                 <div
                     className="aspect-video border border-gray-400 dark:border-gray-700 rounded-2xl overflow-hidden touch-pan-y"
                     onTouchStart={total > 1 ? onTouchStart : undefined}
@@ -126,7 +151,7 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
 
                 {proyect.state !== "finished" && (
                     <span
-                        className={`absolute top-3 left-3 rounded-full border px-3 py-1 text-xs open-sans ${isEducational ? "border-[#259E93] bg-[#E3F6F5] text-[#176b68] dark:border-[#62c9c0] dark:bg-[#163c3d] dark:text-[#D1F4F1]" : "border-[#259E93] bg-[#259E93] text-white"}`}
+                        className={`absolute top-3 left-3 rounded-full border px-3 py-1 text-xs open-sans ${isEducational ? "border-[#259E93] bg-[#E3F6F5] text-[#176b68] dark:border-[#62c9c0] dark:bg-[#163c3d] dark:text-[#D1F4F1]" : "border-[#176b68] bg-[#176b68] text-white"}`}
                     >
                         {isEducational
                             ? "Educativo"
@@ -163,8 +188,9 @@ function ProyectCard({ proyect, index }: ProyectCardProps) {
                                     key={i}
                                     onClick={() => setSelected(i)}
                                     aria-label={`Ir a la imagen ${i + 1}`}
-                                    aria-current={selected === i}
-                                    className={`project-dot absolute top-0 h-1.5 rounded-full cursor-pointer ${selected === i ? "w-5 bg-transparent" : "w-1.5 bg-white/60"}`}
+                                    aria-current={selected === i ? "true" : undefined}
+                                    // before: amplía el área táctil sin cambiar el diseño del punto
+                                    className={`project-dot absolute top-0 h-1.5 rounded-full cursor-pointer before:absolute before:-inset-y-3 before:-inset-x-0.5 before:content-[''] ${selected === i ? "w-5 bg-transparent" : "w-1.5 bg-white/60"}`}
                                     style={{
                                         left: `${i * 12}px`,
                                         transform: `translateX(${selected < i ? 14 : 0}px)`,

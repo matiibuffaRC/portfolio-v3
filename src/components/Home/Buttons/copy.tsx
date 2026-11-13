@@ -7,6 +7,8 @@ type CopyButtonProps = {
     size: "sm" | "md" | "lg";
     content: string;
     label?: string;
+    /** Nombre accesible cuando el botón solo muestra el ícono */
+    ariaLabel?: string;
 };
 
 const variantClasses = {
@@ -27,6 +29,7 @@ function CopyButton({
     size,
     content,
     label = "",
+    ariaLabel = "Copiar al portapapeles",
 }: CopyButtonProps) {
     const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
 
@@ -56,7 +59,9 @@ function CopyButton({
                 type="button"
                 onClick={handleCopy}
                 className={`inline-flex cursor-pointer items-center gap-2 rounded-lg font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#087EA4]/30 dark:focus-visible:ring-[#58C4DC]/30 ${variantClasses[variant]} ${sizeClasses[size]}`}
-                aria-label={status === "copied" ? `${label} copiado` : label}
+                // Si no hay texto visible (solo ícono) el botón igual necesita un nombre accesible
+                aria-label={status === "copied" ? "Copiado al portapapeles" : label || ariaLabel}
+                title={label ? undefined : ariaLabel}
             >
                 {status === "copied" ? (
                     <CheckIcon aria-hidden="true" fontSize="small" />
@@ -71,6 +76,7 @@ function CopyButton({
                 className={`text-sm ${status === "error" ? "text-red-700 dark:text-red-300" : ""}`}
             >
                 {status === "error" ? "No se pudo copiar el contenido." : ""}
+                {status === "copied" ? <span className="sr-only">Copiado al portapapeles</span> : null}
             </span>
         </div>
     );

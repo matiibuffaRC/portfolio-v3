@@ -21,15 +21,15 @@ function Proyects() {
                     <h2 className="urbanist font-bold text-[#087EA4] dark:text-[#58C4DC] text-4xl">
                         PROYECTOS
                     </h2>
-                    <h3 className="open-sans font-semibold text-2xl">
+                    <p className="open-sans font-semibold text-2xl">
                         Algunos de mis destacados...
-                    </h3>
+                    </p>
                 </div>
                 {/* Filtro de opciones */}
                 <div>
-                    <div className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
+                    <div role="group" aria-label="Filtrar proyectos por categoría" className="dark:bg-[#121820] bg-gray-300 rounded-full py-1 px-1 inline-flex flex-row gap-2">
                         {OPTIONS.map((option) => (
-                        <button type="button" key={option} onClick={() => handleOption(option)} className={`font-bold urbanist text-xs hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1 px-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#259E93] ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830] text-[#087EA4] dark:text-[#58C4DC]" : ""}`} >
+                        <button type="button" key={option} aria-pressed={optionSelected === option} onClick={() => handleOption(option)} className={`font-bold urbanist text-sm hover:bg-gray-200 dark:hover:bg-[#212830] rounded-full py-1.5 px-3 cursor-pointer ${optionSelected === option ? "bg-gray-200 dark:bg-[#212830] text-[#087EA4] dark:text-[#58C4DC]" : ""}`} >
                             {option}
                         </button>
                         ))}
