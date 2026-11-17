@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // Import de íconos - Frontend
 import cssIcon from "../../assets/icons/techs/css.svg";
 import htmlIcon from "../../assets/icons/techs/html.svg";
@@ -57,12 +55,10 @@ function TechCarousel({
     technologies,
     direction = "left",
     dark,
-    paused,
 }: {
     technologies: TechIcon[];
     direction?: Direction;
     dark: boolean;
-    paused: boolean;
 }) {
     return (
         <div className="relative w-full overflow-hidden py-3 md:py-4 bg-gray-100 dark:bg-gray-800">
@@ -70,7 +66,7 @@ function TechCarousel({
             <div className="pointer-events-none absolute inset-0 z-10 bg-linear-to-r from-gray-100 via-transparent to-gray-100 dark:from-gray-800 dark:via-transparent dark:to-gray-800" />
 
             {/* Pista de íconos (se repite 3 veces para el loop infinito) */}
-            <div className={`flex w-max mx-auto gap-6 md:gap-10 justify-center items-center tech-track ${ direction === "left" ? "tech-track-left" : "tech-track-right" }`} style={{ animationPlayState: paused ? "paused" : "running" }} >
+            <div className={`flex w-max mx-auto gap-6 md:gap-10 justify-center items-center tech-track ${ direction === "left" ? "tech-track-left" : "tech-track-right" }`} >
                 {[0, 1, 2, 3, 4, 5, 6].map((groupIndex) => (
                     <div key={groupIndex} className="flex gap-6 md:gap-16 justify-center items-center" aria-hidden={groupIndex !== 0} >
                         {technologies.map((tech) => (
@@ -85,24 +81,10 @@ function TechCarousel({
 
 // Componente padre con los dos carruseles 
 function TechCarousels({ dark }: { dark: boolean }) {
-    const [isHovered, setIsHovered] = useState(false);
-    // Pausa manual: el contenido que se mueve solo por más de 5 s debe poder detenerse (WCAG 2.2.2)
-    const [userPaused, setUserPaused] = useState(false);
-    const isPaused = isHovered || userPaused;
-
     return (
-        <div className=" flex flex-col items-center justify-center gap-3 md:gap-4 w-full max-w-full mx-auto px-4 md:px-0" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
-            <TechCarousel technologies={frontendTechnologies} direction="left" dark={dark} paused={isPaused} />
-            <TechCarousel technologies={backendTechnologies} direction="right" dark={dark} paused={isPaused} />
-
-            <button
-                type="button"
-                aria-pressed={userPaused}
-                onClick={() => setUserPaused((p) => !p)}
-                className="tech-pause-btn urbanist cursor-pointer rounded-full border border-gray-300 px-4 py-1.5 text-sm font-semibold text-[#151B23] hover:bg-gray-200 dark:border-gray-700 dark:text-[#D1D7E0] dark:hover:bg-[#252C34]"
-            >
-                {userPaused ? "Reanudar animación" : "Pausar animación"}
-            </button>
+        <div className=" flex flex-col items-center justify-center gap-3 md:gap-4 w-full max-w-full mx-auto px-4 md:px-0" >
+            <TechCarousel technologies={frontendTechnologies} direction="left" dark={dark} />
+            <TechCarousel technologies={backendTechnologies} direction="right" dark={dark} />
 
             {/* Animación del scroll infinito (compartida por ambos carruseles) */}
             <style>{`
@@ -128,10 +110,9 @@ function TechCarousels({ dark }: { dark: boolean }) {
                     animation-direction: reverse;
                 }
 
-                /* Con movimiento reducido el carrusel queda quieto: el botón no hace falta */
+                /* Con movimiento reducido el carrusel queda quieto */
                 @media (prefers-reduced-motion: reduce) {
                     .tech-track { animation: none !important; }
-                    .tech-pause-btn { display: none; }
                 }
 
                 @media (max-width: 768px) {
